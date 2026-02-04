@@ -3,90 +3,420 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NovaBeauty – Ofertas</title>
+<title>NovaBeauty – O Fim das Rugas</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
 
 <style>
-body {
-  font-family: Arial, sans-serif;
-  background: #f7f4ef;
-  margin: 0;
-  padding: 20px;
+/* --- ESTILOS GERAIS (SOFISTICAÇÃO) --- */
+:root {
+    --gold: #d4af37;
+    --gold-light: #f3e5ab;
+    --dark: #1a1a1a;
+    --gray: #f9f9f9;
+    --text: #333;
 }
 
-h1 {
-  text-align: center;
-  color: #8a5a2b;
-  margin-bottom: 30px;
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: var(--text);
+    background-color: #fff;
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+    color: var(--dark);
 }
 
 .container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
-  max-width: 1100px;
-  margin: auto;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
-/* Estilo do Link que envolve a imagem */
-.card-link {
-  display: block;
-  border-radius: 20px;
-  transition: transform 0.2s, box-shadow 0.2s;
-  text-decoration: none;
+/* --- BOTÕES --- */
+.btn-cta {
+    background: linear-gradient(180deg, #d4af37, #b08d2b);
+    color: #fff;
+    padding: 18px 40px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 50px;
+    display: inline-block;
+    box-shadow: 0 10px 20px rgba(212, 175, 55, 0.4);
+    transition: transform 0.2s;
+    border: none;
+    cursor: pointer;
 }
 
-/* Efeito ao passar o rato (hover) */
-.card-link:hover {
-  transform: scale(1.03);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+.btn-cta:hover {
+    transform: scale(1.05);
 }
 
-/* Estilo da Imagem para caber perfeitamente */
-.card-image {
-  width: 100%;
-  height: auto;
-  border-radius: 20px;
-  display: block;
+.center { text-align: center; }
+
+/* --- HERO SECTION (TOPO) --- */
+.hero {
+    background: var(--dark);
+    color: #fff;
+    padding: 60px 0 80px;
+    text-align: center;
+    background-image: radial-gradient(circle at center, #2c2c2c 0%, #000 100%);
+}
+
+.hero h1 {
+    color: var(--gold);
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    line-height: 1.2;
+}
+
+.hero p.subheadline {
+    font-size: 1.2rem;
+    color: #ccc;
+    max-width: 700px;
+    margin: 0 auto 40px;
+}
+
+/* Placeholder do Vídeo */
+.video-wrapper {
+    max-width: 800px;
+    margin: 0 auto 40px;
+    background: #000;
+    border: 2px solid var(--gold);
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    padding-bottom: 56.25%; /* Proporção 16:9 */
+    height: 0;
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* --- BENEFÍCIOS --- */
+.benefits {
+    padding: 60px 0;
+    background: #fff;
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.benefit-item {
+    background: var(--gray);
+    padding: 30px;
+    border-radius: 15px;
+    border-left: 4px solid var(--gold);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.benefit-item h3 { margin-top: 0; color: var(--gold); }
+
+/* --- INGREDIENTES (Do JSON) --- */
+.ingredients {
+    padding: 60px 0;
+    background: #fdfcf8; /* Creme suave */
+}
+
+.ing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    text-align: center;
+}
+
+.ing-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #eee;
+}
+
+.ing-card h4 { color: var(--gold); margin-bottom: 5px; }
+
+/* --- OFERTA (SEUS KITS) --- */
+.offer-section {
+    padding: 80px 0;
+    background: var(--dark); /* Fundo escuro para destacar o dourado */
+    color: #fff;
+    text-align: center;
+}
+
+.offer-section h2 { color: #fff; margin-bottom: 10px; }
+.offer-section p { color: #ccc; margin-bottom: 50px; }
+
+.kits-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.kit-card {
+    transition: transform 0.3s;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.kit-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 25px rgba(212, 175, 55, 0.5); /* Brilho dourado */
+}
+
+.kit-card img {
+    width: 100%;
+    display: block;
+    border-radius: 20px;
+}
+
+/* --- GARANTIA --- */
+.guarantee {
+    background: #fff;
+    padding: 60px 0;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+}
+
+.guarantee-box {
+    border: 2px dashed var(--gold);
+    padding: 40px;
+    border-radius: 20px;
+    max-width: 700px;
+    margin: 0 auto;
+    background: #fffdf5;
+}
+
+/* --- FAQ (Sanfona) --- */
+.faq {
+    padding: 60px 0;
+    background: #fafafa;
+}
+
+details {
+    background: #fff;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    overflow: hidden;
+}
+
+summary {
+    padding: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    list-style: none; /* Remove triângulo padrão */
+    position: relative;
+    padding-right: 40px;
+}
+
+summary::after {
+    content: '+';
+    position: absolute;
+    right: 20px;
+    font-size: 1.5rem;
+    color: var(--gold);
+}
+
+details[open] summary::after { content: '-'; }
+
+.faq-content {
+    padding: 0 20px 20px;
+    color: #666;
+    font-size: 0.95rem;
+}
+
+/* --- FOOTER --- */
+footer {
+    background: #111;
+    color: #666;
+    text-align: center;
+    padding: 40px 20px;
+    font-size: 0.8rem;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 600px) {
+    .hero h1 { font-size: 1.8rem; }
+    .kits-container { grid-template-columns: 1fr; max-width: 350px; margin: 0 auto; }
 }
 </style>
 </head>
 
 <body>
 
-<h1>Ofertas Relâmpago NovaBeauty</h1>
+    <section class="hero">
+        <div class="container">
+            <h1>RITUAL NOTURNO: O FIM DAS RUGAS</h1>
+            <p class="subheadline">Um sérum que reativa as células da juventude na sua pele. Botox em casa, sem agulhas.</p>
 
-<div class="container">
+            <div class="video-wrapper">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/PLACEHOLDER" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
 
-<a href="https://entrega.logzz.com.br/pay/mem65ko8o/1-serum-197" class="card-link">
-  <img src="Kit1.jpg" alt="Kit 1 Frasco" class="card-image">
-</a>
+            <a href="#ofertas" class="btn-cta">QUERO RESTAURAR MINHA PELE</a>
+            
+            <p style="margin-top: 15px; font-size: 0.9rem; opacity: 0.8;">🚚 Frete Grátis para todo Brasil hoje.</p>
+        </div>
+    </section>
 
-<a href="https://entrega.logzz.com.br/pay/mem65ko8o/3-potes-brinde" class="card-link">
-  <img src="Kit2.jpg" alt="Kit 3 Frascos" class="card-image">
-</a>
+    <section class="benefits">
+        <div class="container">
+            <h2 class="center">Por que o NovaBeauty é diferente?</h2>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <h3>✅ Efeito Botox Natural</h3>
+                    <p>Trata e elimina linhas finas e rugas profundas sem procedimentos invasivos.</p>
+                </div>
+                <div class="benefit-item">
+                    <h3>✅ Firmeza Total</h3>
+                    <p>Combate a flacidez e devolve o contorno jovem do seu rosto.</p>
+                </div>
+                <div class="benefit-item">
+                    <h3>✅ Uniformização</h3>
+                    <p>Clareia manchas e uniformiza o tom da pele, devolvendo o viço.</p>
+                </div>
+                <div class="benefit-item">
+                    <h3>✅ Aprovado pela ANVISA</h3>
+                    <p>Fórmula segura, testada e aprovada. Registro 25351.050959/2024-12.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<a href="https://entrega.logzz.com.br/pay/mem65ko8o/upsell-297-49" class="card-link">
-  <img src="Kit3.jpg" alt="Kit 5 Frascos" class="card-image">
-</a>
+    <section class="ingredients">
+        <div class="container">
+            <h2 class="center" style="margin-bottom: 40px;">Fórmula de Alta Tecnologia</h2>
+            <div class="ing-grid">
+                <div class="ing-card">
+                    <h4>Ácido Hialurônico</h4>
+                    <p>Hidratação profunda e preenchimento.</p>
+                </div>
+                <div class="ing-card">
+                    <h4>Nano Resveratrol</h4>
+                    <p>O segredo da longevidade celular.</p>
+                </div>
+                <div class="ing-card">
+                    <h4>Vitamina E</h4>
+                    <p>Poderoso antioxidante contra o tempo.</p>
+                </div>
+                <div class="ing-card">
+                    <h4>Aloe Vera</h4>
+                    <p>Regeneração e suavidade.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<a href="https://entrega.logzz.com.br/pay/mem65ko8o/6-meses-brinde" class="card-link">
-  <img src="Kit4.jpg" alt="Kit 6 Frascos" class="card-image">
-</a>
+    <section id="ofertas" class="offer-section">
+        <div class="container">
+            <h2>ESCOLHA SEU TRATAMENTO</h2>
+            <p>Selecione a melhor opção para sua pele abaixo</p>
 
-<a href="https://entrega.logzz.com.br/pay/mem65ko8o/upsell-446" class="card-link">
-  <img src="Kit5.jpg" alt="Kit 8 Frascos" class="card-image">
-</a>
+            <div class="kits-container">
+                
+                <a href="https://entrega.logzz.com.br/pay/mem65ko8o/upsell-297-49" class="kit-card">
+                    <img src="Kit3.jpg" alt="Kit 5 Frascos">
+                </a>
 
-<a href="https://entrega.logzz.com.br/pay/mem65ko8o/12-brinde" class="card-link">
-  <img src="Kit6.jpg" alt="Kit 12 Frascos" class="card-image">
-</a>
+                 <a href="https://entrega.logzz.com.br/pay/mem65ko8o/3-potes-brinde" class="kit-card">
+                    <img src="Kit2.jpg" alt="Kit 3 Frascos">
+                </a>
 
-<a href="https://entrega.logzz.com.br/pay/mem65ko8o/kuhnq-" class="card-link">
-  <img src="Kit7.jpg" alt="Kit Atacado" class="card-image">
-</a>
+                <a href="https://entrega.logzz.com.br/pay/mem65ko8o/1-serum-197" class="kit-card">
+                    <img src="Kit1.jpg" alt="Kit 1 Frasco">
+                </a>
 
-</div>
+                <a href="https://entrega.logzz.com.br/pay/mem65ko8o/6-meses-brinde" class="kit-card">
+                    <img src="Kit4.jpg" alt="Kit 6 Frascos">
+                </a>
+
+                <a href="https://entrega.logzz.com.br/pay/mem65ko8o/upsell-446" class="kit-card">
+                    <img src="Kit5.jpg" alt="Kit 8 Frascos">
+                </a>
+
+                <a href="https://entrega.logzz.com.br/pay/mem65ko8o/12-brinde" class="kit-card">
+                    <img src="Kit6.jpg" alt="Kit 12 Frascos">
+                </a>
+
+                <a href="https://entrega.logzz.com.br/pay/mem65ko8o/kuhnq-" class="kit-card">
+                    <img src="Kit7.jpg" alt="Kit Atacado">
+                </a>
+
+            </div>
+            
+            <br><br>
+            <img src="https://novabeautycaps.com/wp-content/uploads/2025/06/bandeiras-cartoes-credito.webp" alt="Aceitamos Cartões" style="max-width: 300px; opacity: 0.8;">
+        </div>
+    </section>
+
+    <section class="guarantee">
+        <div class="container">
+            <div class="guarantee-box">
+                <h2 style="color: var(--gold);">DESAFIO 90 DIAS</h2>
+                <p>Nós confiamos tanto na nossa fórmula que fazemos um pacto com você.</p>
+                <p><strong>Use por 90 dias.</strong> Se você não ver resultados visíveis na sua pele, nós devolvemos 100% do seu dinheiro. O risco é todo nosso.</p>
+                <img src="https://novabeautycaps.com/wp-content/uploads/2024/06/garantia.png" alt="Selo Garantia" style="width: 100px; margin-top: 20px;">
+            </div>
+        </div>
+    </section>
+
+    <section class="faq">
+        <div class="container">
+            <h2 class="center">Dúvidas Frequentes</h2>
+            
+            <details>
+                <summary>O que é o Sérum NovaBeauty?</summary>
+                <div class="faq-content">
+                    É um tratamento facial desenvolvido com ácido hialurônico, vitamina E, aloe vera e nano resveratrol. Ele hidrata, reduz rugas e devolve a firmeza.
+                </div>
+            </details>
+
+            <details>
+                <summary>Como devo usar?</summary>
+                <div class="faq-content">
+                    Aplique algumas gotas sobre a pele limpa e seca, espalhando suavemente. Use 2 vezes ao dia (manhã e noite).
+                </div>
+            </details>
+
+            <details>
+                <summary>Em quanto tempo vejo resultados?</summary>
+                <div class="faq-content">
+                    Resultados de hidratação são imediatos. Resultados visíveis de firmeza e redução de rugas geralmente aparecem a partir de 30 dias de uso contínuo.
+                </div>
+            </details>
+
+            <details>
+                <summary>É seguro? Tem Anvisa?</summary>
+                <div class="faq-content">
+                    Sim! O produto é dermatologicamente testado e aprovado pela ANVISA sob o número 25351.050959/2024-12.
+                </div>
+            </details>
+
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 NovaBeauty. Todos os direitos reservados.</p>
+        <p>Site Seguro. Enviamos para todo o Brasil.</p>
+        <br>
+        <small>Os resultados podem variar de pessoa para pessoa.</small>
+    </footer>
 
 </body>
 </html>
-
