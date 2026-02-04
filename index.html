@@ -10,7 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
 
 <style>
-/* --- ESTILOS GERAIS (SOFISTICAÇÃO) --- */
+/* --- ESTILOS GERAIS --- */
 :root {
     --gold: #d4af37;
     --gold-light: #f3e5ab;
@@ -39,7 +39,9 @@ h1, h2, h3 {
     padding: 0 20px;
 }
 
-/* --- BOTÕES --- */
+.center { text-align: center; }
+
+/* --- BOTÃO DE AÇÃO (CTA) --- */
 .btn-cta {
     background: linear-gradient(180deg, #d4af37, #b08d2b);
     color: #fff;
@@ -54,13 +56,12 @@ h1, h2, h3 {
     transition: transform 0.2s;
     border: none;
     cursor: pointer;
+    margin-top: 20px;
 }
 
 .btn-cta:hover {
     transform: scale(1.05);
 }
-
-.center { text-align: center; }
 
 /* --- HERO SECTION (TOPO) --- */
 .hero {
@@ -85,10 +86,10 @@ h1, h2, h3 {
     margin: 0 auto 40px;
 }
 
-/* Placeholder do Vídeo */
+/* --- WRAPPER DO VÍDEO --- */
 .video-wrapper {
     max-width: 800px;
-    margin: 0 auto 40px;
+    margin: 0 auto 30px;
     background: #000;
     border: 2px solid var(--gold);
     border-radius: 10px;
@@ -129,10 +130,10 @@ h1, h2, h3 {
 
 .benefit-item h3 { margin-top: 0; color: var(--gold); }
 
-/* --- INGREDIENTES (Do JSON) --- */
+/* --- INGREDIENTES --- */
 .ingredients {
     padding: 60px 0;
-    background: #fdfcf8; /* Creme suave */
+    background: #fdfcf8;
 }
 
 .ing-grid {
@@ -151,10 +152,10 @@ h1, h2, h3 {
 
 .ing-card h4 { color: var(--gold); margin-bottom: 5px; }
 
-/* --- OFERTA (SEUS KITS) --- */
+/* --- OFERTA (KITS) --- */
 .offer-section {
     padding: 80px 0;
-    background: var(--dark); /* Fundo escuro para destacar o dourado */
+    background: var(--dark);
     color: #fff;
     text-align: center;
 }
@@ -172,11 +173,12 @@ h1, h2, h3 {
     transition: transform 0.3s;
     border-radius: 20px;
     overflow: hidden;
+    display: block; /* Garante área clicável */
 }
 
 .kit-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 0 25px rgba(212, 175, 55, 0.5); /* Brilho dourado */
+    box-shadow: 0 0 25px rgba(212, 175, 55, 0.5);
 }
 
 .kit-card img {
@@ -202,7 +204,7 @@ h1, h2, h3 {
     background: #fffdf5;
 }
 
-/* --- FAQ (Sanfona) --- */
+/* --- FAQ --- */
 .faq {
     padding: 60px 0;
     background: #fafafa;
@@ -220,7 +222,7 @@ summary {
     padding: 20px;
     font-weight: 600;
     cursor: pointer;
-    list-style: none; /* Remove triângulo padrão */
+    list-style: none;
     position: relative;
     padding-right: 40px;
 }
@@ -248,9 +250,61 @@ footer {
     text-align: center;
     padding: 40px 20px;
     font-size: 0.8rem;
+    margin-bottom: 60px; /* Espaço para não cobrir com o botão do whats no mobile */
 }
 
-/* Mobile Adjustments */
+/* --- WHATSAPP FLUTUANTE --- */
+.whatsapp-wrapper {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.whatsapp-balloon {
+  background: #fff;
+  color: #333;
+  padding: 10px 15px;
+  border-radius: 20px 20px 5px 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  white-space: nowrap;
+  position: relative;
+  animation: flutuar 3s ease-in-out infinite;
+  border: 1px solid #eee;
+}
+
+.whatsapp-btn {
+  background-color: #25d366;
+  color: white;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 60px;
+  font-size: 32px;
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+  text-decoration: none;
+  transition: transform 0.3s;
+  display: block;
+}
+
+.whatsapp-btn:hover {
+  transform: scale(1.1);
+}
+
+@keyframes flutuar {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+  100% { transform: translateY(0); }
+}
+
+/* --- MOBILE --- */
 @media (max-width: 600px) {
     .hero h1 { font-size: 1.8rem; }
     .kits-container { grid-template-columns: 1fr; max-width: 350px; margin: 0 auto; }
@@ -265,7 +319,7 @@ footer {
             <h1>RITUAL NOTURNO: O FIM DAS RUGAS</h1>
             <p class="subheadline">Um sérum que reativa as células da juventude na sua pele. Botox em casa, sem agulhas.</p>
 
-                        <div class="video-wrapper">
+            <div class="video-wrapper">
                 <iframe 
                     src="https://player-vz-57c17c61-5f9.tv.pandavideo.com.br/embed/?v=31ca9b69-048b-4b05-ab21-8cb005ed5bc7" 
                     style="border:none;" 
@@ -273,7 +327,6 @@ footer {
                     allowfullscreen>
                 </iframe>
             </div>
-
 
             <a href="#ofertas" class="btn-cta">QUERO RESTAURAR MINHA PELE</a>
             
@@ -418,11 +471,22 @@ footer {
     </section>
 
     <footer>
-        <p>&copy; 2026 NovaBeauty. Todos os direitos reservados.</p>
+        <p>© 2026 NovaBeauty. Todos os direitos reservados.</p>
         <p>Site Seguro. Enviamos para todo o Brasil.</p>
         <br>
         <small>Os resultados podem variar de pessoa para pessoa.</small>
     </footer>
 
+    <div class="whatsapp-wrapper">
+        <div class="whatsapp-balloon">
+            Tem alguma dúvida?
+        </div>
+        
+        <a href="https://wa.me/5562994593862?text=Ol%C3%A1%2C%20vim%20da%20p%C3%A1gina%20de%20vendas%20e%20estou%20com%20dificuldade%20em%20agendar%20a%20entrega" class="whatsapp-btn" target="_blank">
+            💬
+        </a>
+    </div>
+
 </body>
 </html>
+
