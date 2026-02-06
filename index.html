@@ -4,54 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NovaBeauty – Site Oficial</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
-        :root { --gold: #d4af37; --dark: #000; --white: #fff; }
+        :root { --gold: #d4af37; --dark: #000; --white: #fff; --green: #28a745; }
         body { font-family: 'Montserrat', sans-serif; margin: 0; background-color: var(--white); color: #333; overflow-x: hidden; }
-        
-        /* HEADER & HERO (Inspirado na sua página antiga) */
-        .hero { background: var(--dark); color: var(--white); text-align: center; padding: 60px 20px; border-bottom: 3px solid var(--gold); }
-        .hero h1 { font-family: 'Playfair Display', serif; color: var(--gold); font-size: 2.5rem; margin-bottom: 10px; }
-        .video-wrapper { max-width: 800px; margin: 30px auto; border: 2px solid var(--gold); border-radius: 10px; overflow: hidden; position: relative; padding-bottom: 56.25%; height: 0; }
-        .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-
-        /* SEÇÃO DE OFERTAS (ARTES DOS KITS) */
-        .offer-section { padding: 80px 20px; text-align: center; background: #0c0c0c; }
-        .offer-section h2 { color: var(--white); font-family: 'Playfair Display', serif; margin-bottom: 40px; font-size: 2rem; }
+        .offer-section { padding: 60px 20px; text-align: center; background: #0c0c0c; }
         .kits-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; max-width: 1200px; margin: 0 auto; }
-        
-        .kit-card { width: 330px; cursor: pointer; transition: 0.4s; border-radius: 20px; overflow: hidden; border: 1px solid #222; position: relative; }
-        .kit-card:hover { transform: translateY(-15px); border-color: var(--gold); box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4); }
+        .kit-card { width: 320px; cursor: pointer; transition: 0.4s; border-radius: 20px; overflow: hidden; border: 1px solid #222; position: relative; }
         .kit-card img { width: 100%; display: block; }
-        
-        /* DESTAQUE DO KIT 2 */
-        .kit-destaque { border: 2.5px solid var(--gold); transform: scale(1.05); z-index: 5; }
-        .kit-destaque::after { content: "MAIS VENDIDO"; position: absolute; top: 15px; right: 15px; background: var(--gold); color: #000; padding: 6px 12px; font-weight: bold; font-size: 0.75rem; border-radius: 5px; }
-
-        /* MODAL DE LOGÍSTICA INTELIGENTE */
+        .kit-destaque { border: 2px solid var(--gold); transform: scale(1.05); z-index: 5; }
         .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.96); z-index: 10000; justify-content: center; align-items: center; }
         .modal-content { background: #fff; padding: 40px; border-radius: 25px; width: 90%; max-width: 420px; text-align: center; border: 4px solid var(--gold); }
-        .cep-input { width: 100%; padding: 18px; margin: 25px 0; border: 2px solid #eee; border-radius: 12px; font-size: 1.4rem; text-align: center; color: var(--dark); box-sizing: border-box; outline: none; }
-        .cep-input:focus { border-color: var(--gold); }
-        .btn-check { background: var(--gold); color: #000; border: none; padding: 20px; width: 100%; font-weight: bold; border-radius: 50px; cursor: pointer; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; }
-        #loading { display: none; margin-top: 15px; color: var(--gold); font-weight: 600; }
-
-        @media (max-width: 600px) { .kit-card { width: 100%; } .kit-destaque { transform: scale(1); } }
+        .cep-input { width: 100%; padding: 18px; margin: 25px 0; border: 2px solid #eee; border-radius: 12px; font-size: 1.4rem; text-align: center; box-sizing: border-box; }
+        .btn-check { background: var(--gold); color: #000; border: none; padding: 20px; width: 100%; font-weight: bold; border-radius: 50px; cursor: pointer; font-size: 1.1rem; text-transform: uppercase; }
+        #success-area { display: none; }
+        .badge-brinde { background: var(--green); color: #fff; padding: 10px; border-radius: 10px; font-weight: bold; margin-bottom: 20px; animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
     </style>
 </head>
 <body>
 
-<section class="hero">
-    <h1>NOVA BEAUTY</h1>
-    <p>O Segredo das Células da Juventude</p>
-    <div class="video-wrapper">
-        <iframe src="https://player-vz-57c17c61-5f9.tv.pandavideo.com.br/embed/?v=31ca9b69-048b-4b05-ab21-8cb005ed5bc7" allowfullscreen></iframe>
-    </div>
-</section>
-
 <section class="offer-section">
-    <h2>ESCOLHA O SEU TRATAMENTO</h2>
     <div class="kits-container">
         <div class="kit-card" onclick="iniciarFluxo('kit1')"><img src="kit1.jpg"></div>
         <div class="kit-card kit-destaque" onclick="iniciarFluxo('kit2')"><img src="kit3.jpg"></div>
@@ -61,11 +34,19 @@
 
 <div id="modalCep" class="modal">
     <div class="modal-content">
-        <h3 style="margin-top:0;">🚀 LIBERAR FRETE GRÁTIS</h3>
-        <p style="color: #666;">Digite seu CEP para validarmos a entrega rápida por Motoboy na sua região.</p>
-        <input type="text" id="cepInput" class="cep-input" placeholder="00000-000" maxlength="9">
-        <button class="btn-check" onclick="validarCEP()">VERIFICAR DISPONIBILIDADE</button>
-        <div id="loading">🔍 Analisando rotas logísticas...</div>
+        <div id="step-search">
+            <h3 style="margin-top:0;">🚚 VERIFICAR FRETE GRÁTIS</h3>
+            <p>Informe seu CEP para calcular o prazo de entrega na sua região.</p>
+            <input type="text" id="cepInput" class="cep-input" placeholder="00000-000" maxlength="9">
+            <button class="btn-check" onclick="processarLogistica()">VERIFICAR CEP</button>
+        </div>
+        <div id="success-area">
+            <div class="badge-brinde">🎁 BRINDE DISPONÍVEL!</div>
+            <h2 style="color: var(--green); margin-bottom: 10px;">BOA NOTÍCIA!</h2>
+            <p id="msg-entrega"></p>
+            <p style="font-size: 1.1rem;">Você acaba de ganhar <strong>+1 Frasco de Brinde</strong> nesta compra!</p>
+            <button class="btn-check" id="btn-finalizar" style="background: var(--green); color: #fff;">RESGATAR MEU BRINDE + FRETE GRÁTIS</button>
+        </div>
     </div>
 </div>
 
@@ -73,63 +54,61 @@
     let kitAtivo = '';
     let cepsBloqueados = new Set();
     let cidadesAtendidas = new Set();
+    let linkDestino = '';
 
-    // CARREGA OS DADOS DOS ARQUIVOS JSON QUE VOCÊ SUBIU NO GITHUB
-    async function carregarDados() {
+    async function carregarBases() {
         try {
-            const [bloqueados, cidades] = await Promise.all([
+            const [bloq, cidades] = await Promise.all([
                 fetch('ceps-bloqueados.json').then(r => r.json()),
                 fetch('cidades-atendidas.json').then(r => r.json())
             ]);
-            cepsBloqueados = new Set(bloqueados);
+            cepsBloqueados = new Set(bloq);
             cidadesAtendidas = new Set(cidades);
-            console.log("Sistema de Logística Ativo.");
-        } catch (e) { console.error("Erro ao carregar arquivos de dados."); }
+        } catch (e) { console.error("Erro ao carregar bases de dados."); }
     }
-    carregarDados();
+    carregarBases();
 
     const links = {
-        kit1: { 
-            logzz: "https://entrega.logzz.com.br/pay/mem65ko8o/1-serum-197?src=pv_logzz_kit1", 
-            braip: "https://pay.braip.co/ref?pl=plalg0mv&ck=che27mmq&af=afio8e3ln1&src=pv_braip_kit1" 
-        },
-        kit2: { 
-            logzz: "https://entrega.logzz.com.br/pay/mem65ko8o/3-potes-brinde?src=pv_logzz_kit2", 
-            braip: "https://pay.braip.co/ref?pl=pla24xp0&ck=che27mmq&af=afio8e3ln1&src=pv_braip_kit2" 
-        },
-        kit3: { 
-            logzz: "https://entrega.logzz.com.br/pay/mem65ko8o/upsell-297-49?src=pv_logzz_kit3", 
-            braip: "https://pay.braip.co/ref?pl=plaj09lr&ck=che27mmq&af=afio8e3ln1&src=pv_braip_kit3" 
-        }
+        kit1: { logzz: "https://entrega.logzz.com.br/pay/mem65ko8o/1-serum-197?src=pv_logzz_kit1", braip: "https://pay.braip.co/ref?pl=plalg0mv&ck=che27mmq&af=afio8e3ln1&src=pv_braip_kit1" },
+        kit2: { logzz: "https://entrega.logzz.com.br/pay/mem65ko8o/3-potes-brinde?src=pv_logzz_kit2", braip: "https://pay.braip.co/ref?pl=pla24xp0&ck=che27mmq&af=afio8e3ln1&src=pv_braip_kit2" },
+        kit3: { logzz: "https://entrega.logzz.com.br/pay/mem65ko8o/upsell-297-49?src=pv_logzz_kit3", braip: "https://pay.braip.co/ref?pl=plaj09lr&ck=che27mmq&af=afio8e3ln1&src=pv_braip_kit3" }
     };
 
-    function iniciarFluxo(kit) { kitAtivo = kit; document.getElementById('modalCep').style.display = 'flex'; }
-
-    async function validarCEP() {
-        const cep = document.getElementById('cepInput').value.replace(/\D/g, "");
-        if(cep.length !== 8) return alert("Digite um CEP válido.");
-        document.getElementById('loading').style.display = 'block';
-
-        // 🛡️ Filtro 1: Bloqueio Total (Áreas de Risco)
-        if(cepsBloqueados.has(cep)) { 
-            window.location.href = links[kitAtivo].braip; 
-            return; 
-        }
-
-        try {
-            const res = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
-            const data = await res.json();
-            if(data.erro) throw new Error();
-
-            // 📍 Filtro 2: Cidade Atendida (Logzz)
-            const cidade = data.localidade.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-            
-            if(cidadesAtendidas.has(cidade)) { window.location.href = links[kitAtivo].logzz; }
-            else { window.location.href = links[kitAtivo].braip; }
-        } catch(e) { window.location.href = links[kitAtivo].braip; }
+    function iniciarFluxo(kit) { 
+        kitAtivo = kit; 
+        document.getElementById('step-search').style.display = 'block';
+        document.getElementById('success-area').style.display = 'none';
+        document.getElementById('modalCep').style.display = 'flex'; 
     }
 
-    // Formatação automática do CEP
+    async function processarLogistica() {
+        const cep = document.getElementById('cepInput').value.replace(/\D/g, "");
+        if(cep.length !== 8) return alert("CEP inválido.");
+        let isBraip = false;
+        let msg = "";
+        if(cepsBloqueados.has(cep)) {
+            isBraip = true;
+            msg = "Sua região é atendida via <strong>Envio Prioritário (Correios)</strong>.";
+        } else {
+            try {
+                const res = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+                const data = await res.json();
+                const cidade = data.localidade.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+                if(cidadesAtendidas.has(cidade)) {
+                    isBraip = false;
+                    msg = "Sua região possui <strong>Entrega Expressa por Motoboy</strong> disponível!";
+                } else {
+                    isBraip = true;
+                    msg = "Sua região é atendida via <strong>Envio Prioritário (Correios)</strong>.";
+                }
+            } catch(e) { isBraip = true; msg = "Sua região é atendida via <strong>Envio Prioritário (Correios)</strong>."; }
+        }
+        linkDestino = isBraip ? links[kitAtivo].braip : links[kitAtivo].logzz;
+        document.getElementById('msg-entrega').innerHTML = msg;
+        document.getElementById('step-search').style.display = 'none';
+        document.getElementById('success-area').style.display = 'block';
+    }
+    document.getElementById('btn-finalizar').onclick = function() { window.location.href = linkDestino; };
     document.getElementById('cepInput').addEventListener('input', (e) => {
         let v = e.target.value.replace(/\D/g, "");
         if (v.length > 5) v = v.slice(0, 5) + "-" + v.slice(5, 8);
@@ -138,4 +117,3 @@
 </script>
 </body>
 </html>
-
