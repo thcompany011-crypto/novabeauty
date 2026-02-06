@@ -1,492 +1,141 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NovaBeauty – O Fim das Rugas</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NovaBeauty – Site Oficial</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root { --gold: #d4af37; --dark: #000; --white: #fff; }
+        body { font-family: 'Montserrat', sans-serif; margin: 0; background-color: var(--white); color: #333; overflow-x: hidden; }
+        
+        /* HEADER & HERO (Inspirado na sua página antiga) */
+        .hero { background: var(--dark); color: var(--white); text-align: center; padding: 60px 20px; border-bottom: 3px solid var(--gold); }
+        .hero h1 { font-family: 'Playfair Display', serif; color: var(--gold); font-size: 2.5rem; margin-bottom: 10px; }
+        .video-wrapper { max-width: 800px; margin: 30px auto; border: 2px solid var(--gold); border-radius: 10px; overflow: hidden; position: relative; padding-bottom: 56.25%; height: 0; }
+        .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+        /* SEÇÃO DE OFERTAS (ARTES DOS KITS) */
+        .offer-section { padding: 80px 20px; text-align: center; background: #0c0c0c; }
+        .offer-section h2 { color: var(--white); font-family: 'Playfair Display', serif; margin-bottom: 40px; font-size: 2rem; }
+        .kits-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; max-width: 1200px; margin: 0 auto; }
+        
+        .kit-card { width: 330px; cursor: pointer; transition: 0.4s; border-radius: 20px; overflow: hidden; border: 1px solid #222; position: relative; }
+        .kit-card:hover { transform: translateY(-15px); border-color: var(--gold); box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4); }
+        .kit-card img { width: 100%; display: block; }
+        
+        /* DESTAQUE DO KIT 2 */
+        .kit-destaque { border: 2.5px solid var(--gold); transform: scale(1.05); z-index: 5; }
+        .kit-destaque::after { content: "MAIS VENDIDO"; position: absolute; top: 15px; right: 15px; background: var(--gold); color: #000; padding: 6px 12px; font-weight: bold; font-size: 0.75rem; border-radius: 5px; }
 
-<style>
-/* --- ESTILOS GERAIS --- */
-:root {
-    --gold: #d4af37;
-    --gold-light: #f3e5ab;
-    --dark: #1a1a1a;
-    --gray: #f9f9f9;
-    --text: #333;
-}
+        /* MODAL DE LOGÍSTICA INTELIGENTE */
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.96); z-index: 10000; justify-content: center; align-items: center; }
+        .modal-content { background: #fff; padding: 40px; border-radius: 25px; width: 90%; max-width: 420px; text-align: center; border: 4px solid var(--gold); }
+        .cep-input { width: 100%; padding: 18px; margin: 25px 0; border: 2px solid #eee; border-radius: 12px; font-size: 1.4rem; text-align: center; color: var(--dark); box-sizing: border-box; outline: none; }
+        .cep-input:focus { border-color: var(--gold); }
+        .btn-check { background: var(--gold); color: #000; border: none; padding: 20px; width: 100%; font-weight: bold; border-radius: 50px; cursor: pointer; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; }
+        #loading { display: none; margin-top: 15px; color: var(--gold); font-weight: 600; }
 
-body {
-    font-family: 'Montserrat', sans-serif;
-    margin: 0;
-    padding: 0;
-    color: var(--text);
-    background-color: #fff;
-    line-height: 1.6;
-}
-
-h1, h2, h3 {
-    font-family: 'Playfair Display', serif;
-    color: var(--dark);
-}
-
-.container {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-.center { text-align: center; }
-
-/* --- BOTÃO DE AÇÃO (CTA) --- */
-.btn-cta {
-    background: linear-gradient(180deg, #d4af37, #b08d2b);
-    color: #fff;
-    padding: 18px 40px;
-    font-size: 1.2rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    text-decoration: none;
-    border-radius: 50px;
-    display: inline-block;
-    box-shadow: 0 10px 20px rgba(212, 175, 55, 0.4);
-    transition: transform 0.2s;
-    border: none;
-    cursor: pointer;
-    margin-top: 20px;
-}
-
-.btn-cta:hover {
-    transform: scale(1.05);
-}
-
-/* --- HERO SECTION (TOPO) --- */
-.hero {
-    background: var(--dark);
-    color: #fff;
-    padding: 60px 0 80px;
-    text-align: center;
-    background-image: radial-gradient(circle at center, #2c2c2c 0%, #000 100%);
-}
-
-.hero h1 {
-    color: var(--gold);
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-    line-height: 1.2;
-}
-
-.hero p.subheadline {
-    font-size: 1.2rem;
-    color: #ccc;
-    max-width: 700px;
-    margin: 0 auto 40px;
-}
-
-/* --- WRAPPER DO VÍDEO --- */
-.video-wrapper {
-    max-width: 800px;
-    margin: 0 auto 30px;
-    background: #000;
-    border: 2px solid var(--gold);
-    border-radius: 10px;
-    overflow: hidden;
-    position: relative;
-    padding-bottom: 56.25%; /* Proporção 16:9 */
-    height: 0;
-}
-
-.video-wrapper iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-/* --- BENEFÍCIOS --- */
-.benefits {
-    padding: 60px 0;
-    background: #fff;
-}
-
-.benefits-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    margin-top: 40px;
-}
-
-.benefit-item {
-    background: var(--gray);
-    padding: 30px;
-    border-radius: 15px;
-    border-left: 4px solid var(--gold);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-}
-
-.benefit-item h3 { margin-top: 0; color: var(--gold); }
-
-/* --- INGREDIENTES --- */
-.ingredients {
-    padding: 60px 0;
-    background: #fdfcf8;
-}
-
-.ing-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    text-align: center;
-}
-
-.ing-card {
-    background: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    border: 1px solid #eee;
-}
-
-.ing-card h4 { color: var(--gold); margin-bottom: 5px; }
-
-/* --- OFERTA (KITS) --- */
-.offer-section {
-    padding: 80px 0;
-    background: var(--dark);
-    color: #fff;
-    text-align: center;
-}
-
-.offer-section h2 { color: #fff; margin-bottom: 10px; }
-.offer-section p { color: #ccc; margin-bottom: 50px; }
-
-.kits-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
-}
-
-.kit-card {
-    transition: transform 0.3s;
-    border-radius: 20px;
-    overflow: hidden;
-    display: block; /* Garante área clicável */
-}
-
-.kit-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 0 25px rgba(212, 175, 55, 0.5);
-}
-
-.kit-card img {
-    width: 100%;
-    display: block;
-    border-radius: 20px;
-}
-
-/* --- GARANTIA --- */
-.guarantee {
-    background: #fff;
-    padding: 60px 0;
-    text-align: center;
-    border-bottom: 1px solid #eee;
-}
-
-.guarantee-box {
-    border: 2px dashed var(--gold);
-    padding: 40px;
-    border-radius: 20px;
-    max-width: 700px;
-    margin: 0 auto;
-    background: #fffdf5;
-}
-
-/* --- FAQ --- */
-.faq {
-    padding: 60px 0;
-    background: #fafafa;
-}
-
-details {
-    background: #fff;
-    margin-bottom: 15px;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    overflow: hidden;
-}
-
-summary {
-    padding: 20px;
-    font-weight: 600;
-    cursor: pointer;
-    list-style: none;
-    position: relative;
-    padding-right: 40px;
-}
-
-summary::after {
-    content: '+';
-    position: absolute;
-    right: 20px;
-    font-size: 1.5rem;
-    color: var(--gold);
-}
-
-details[open] summary::after { content: '-'; }
-
-.faq-content {
-    padding: 0 20px 20px;
-    color: #666;
-    font-size: 0.95rem;
-}
-
-/* --- FOOTER --- */
-footer {
-    background: #111;
-    color: #666;
-    text-align: center;
-    padding: 40px 20px;
-    font-size: 0.8rem;
-    margin-bottom: 60px; /* Espaço para não cobrir com o botão do whats no mobile */
-}
-
-/* --- WHATSAPP FLUTUANTE --- */
-.whatsapp-wrapper {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 9999;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-}
-
-.whatsapp-balloon {
-  background: #fff;
-  color: #333;
-  padding: 10px 15px;
-  border-radius: 20px 20px 5px 20px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-  margin-bottom: 10px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  white-space: nowrap;
-  position: relative;
-  animation: flutuar 3s ease-in-out infinite;
-  border: 1px solid #eee;
-}
-
-.whatsapp-btn {
-  background-color: #25d366;
-  color: white;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  text-align: center;
-  line-height: 60px;
-  font-size: 32px;
-  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-  text-decoration: none;
-  transition: transform 0.3s;
-  display: block;
-}
-
-.whatsapp-btn:hover {
-  transform: scale(1.1);
-}
-
-@keyframes flutuar {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-5px); }
-  100% { transform: translateY(0); }
-}
-
-/* --- MOBILE --- */
-@media (max-width: 600px) {
-    .hero h1 { font-size: 1.8rem; }
-    .kits-container { grid-template-columns: 1fr; max-width: 350px; margin: 0 auto; }
-}
-</style>
+        @media (max-width: 600px) { .kit-card { width: 100%; } .kit-destaque { transform: scale(1); } }
+    </style>
 </head>
-
 <body>
 
-    <section class="hero">
-        <div class="container">
-            <h1>RITUAL NOTURNO: O FIM DAS RUGAS</h1>
-            <p class="subheadline">Um sérum que reativa as células da juventude na sua pele. Botox em casa, sem agulhas.</p>
-
-            <div class="video-wrapper">
-                <iframe 
-                    src="https://player-vz-57c17c61-5f9.tv.pandavideo.com.br/embed/?v=31ca9b69-048b-4b05-ab21-8cb005ed5bc7" 
-                    style="border:none;" 
-                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-                </iframe>
-            </div>
-
-            <a href="#ofertas" class="btn-cta">QUERO RESTAURAR MINHA PELE</a>
-            
-            <p style="margin-top: 15px; font-size: 0.9rem; opacity: 0.8;">🚚 Frete Grátis para regiões selecionadas</p>
-        </div>
-    </section>
-
-    <section class="benefits">
-        <div class="container">
-            <h2 class="center">Por que o NovaBeauty é diferente?</h2>
-            <div class="benefits-grid">
-                <div class="benefit-item">
-                    <h3>✅ Efeito Botox Natural</h3>
-                    <p>Trata e elimina linhas finas e rugas profundas sem procedimentos invasivos.</p>
-                </div>
-                <div class="benefit-item">
-                    <h3>✅ Firmeza Total</h3>
-                    <p>Combate a flacidez e devolve o contorno jovem do seu rosto.</p>
-                </div>
-                <div class="benefit-item">
-                    <h3>✅ Uniformização</h3>
-                    <p>Clareia manchas e uniformiza o tom da pele, devolvendo o viço.</p>
-                </div>
-                <div class="benefit-item">
-                    <h3>✅ Aprovado pela ANVISA</h3>
-                    <p>Fórmula segura, testada e aprovada. Registro 25351.050959/2024-12.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="ingredients">
-        <div class="container">
-            <h2 class="center" style="margin-bottom: 40px;">Fórmula de Alta Tecnologia</h2>
-            <div class="ing-grid">
-                <div class="ing-card">
-                    <h4>Ácido Hialurônico</h4>
-                    <p>Hidratação profunda e preenchimento.</p>
-                </div>
-                <div class="ing-card">
-                    <h4>Nano Resveratrol</h4>
-                    <p>O segredo da longevidade celular.</p>
-                </div>
-                <div class="ing-card">
-                    <h4>Vitamina E</h4>
-                    <p>Poderoso antioxidante contra o tempo.</p>
-                </div>
-                <div class="ing-card">
-                    <h4>Aloe Vera</h4>
-                    <p>Regeneração e suavidade.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="ofertas" class="offer-section">
-        <div class="container">
-            <h2>ESCOLHA SEU TRATAMENTO</h2>
-            <p>Selecione a melhor opção para sua pele abaixo</p>
-
-            <div class="kits-container">
-                
-                <a href="https://entrega.logzz.com.br/pay/mem65ko8o/upsell-297-49" class="kit-card">
-                    <img src="Kit3.jpg" alt="Kit 5 Frascos">
-                </a>
-
-                 <a href="https://entrega.logzz.com.br/pay/mem65ko8o/3-potes-brinde" class="kit-card">
-                    <img src="Kit2.jpg" alt="Kit 3 Frascos">
-                </a>
-
-                <a href="https://entrega.logzz.com.br/pay/mem65ko8o/1-serum-197" class="kit-card">
-                    <img src="Kit1.jpg" alt="Kit 1 Frasco">
-                </a>
-
-                <a href="https://entrega.logzz.com.br/pay/mem65ko8o/6-meses-brinde" class="kit-card">
-                    <img src="Kit4.jpg" alt="Kit 6 Frascos">
-                </a>
-
-                <a href="https://entrega.logzz.com.br/pay/mem65ko8o/upsell-446" class="kit-card">
-                    <img src="Kit5.jpg" alt="Kit 8 Frascos">
-                </a>
-
-                <a href="https://entrega.logzz.com.br/pay/mem65ko8o/12-brinde" class="kit-card">
-                    <img src="Kit6.jpg" alt="Kit 12 Frascos">
-                </a>
-
-                <a href="https://entrega.logzz.com.br/pay/mem65ko8o/kuhnq-" class="kit-card">
-                    <img src="Kit7.jpg" alt="Kit Atacado">
-                </a>
-
-            </div>
-            
-            <br><br>
-            <img src="https://novabeautycaps.com/wp-content/uploads/2025/06/bandeiras-cartoes-credito.webp" alt="Aceitamos Cartões" style="max-width: 300px; opacity: 0.8;">
-        </div>
-    </section>
-
-    <section class="guarantee">
-        <div class="container">
-            <div class="guarantee-box">
-                <h2 style="color: var(--gold);">DESAFIO 90 DIAS</h2>
-                <p>Nós confiamos tanto na nossa fórmula que fazemos um pacto com você.</p>
-                <p><strong>Use por 90 dias.</strong> Se você não ver resultados visíveis na sua pele, nós devolvemos 100% do seu dinheiro. O risco é todo nosso.</p>
-                <img src="https://novabeautycaps.com/wp-content/uploads/2024/06/garantia.png" alt="Selo Garantia" style="width: 100px; margin-top: 20px;">
-            </div>
-        </div>
-    </section>
-
-    <section class="faq">
-        <div class="container">
-            <h2 class="center">Dúvidas Frequentes</h2>
-            
-            <details>
-                <summary>O que é o Sérum NovaBeauty?</summary>
-                <div class="faq-content">
-                    É um tratamento facial desenvolvido com ácido hialurônico, vitamina E, aloe vera e nano resveratrol. Ele hidrata, reduz rugas e devolve a firmeza.
-                </div>
-            </details>
-
-            <details>
-                <summary>Como devo usar?</summary>
-                <div class="faq-content">
-                    Aplique algumas gotas sobre a pele limpa e seca, espalhando suavemente. Use 2 vezes ao dia (manhã e noite).
-                </div>
-            </details>
-
-            <details>
-                <summary>Em quanto tempo vejo resultados?</summary>
-                <div class="faq-content">
-                    Resultados de hidratação são imediatos. Resultados visíveis de firmeza e redução de rugas geralmente aparecem a partir de 30 dias de uso contínuo.
-                </div>
-            </details>
-
-            <details>
-                <summary>É seguro? Tem Anvisa?</summary>
-                <div class="faq-content">
-                    Sim! O produto é dermatologicamente testado e aprovado pela ANVISA sob o número 25351.050959/2024-12.
-                </div>
-            </details>
-
-        </div>
-    </section>
-
-    <footer>
-        <p>© 2026 NovaBeauty. Todos os direitos reservados.</p>
-        <p>Site Seguro. Entrega garantida nas áreas atendidas.</p>
-        <br>
-        <small>Os resultados podem variar de pessoa para pessoa.</small>
-    </footer>
-
-    <div class="whatsapp-wrapper">
-        <div class="whatsapp-balloon">
-            Tem alguma dúvida?
-        </div>
-        
-        <a href="https://wa.me/5562994593862?text=Ol%C3%A1%2C%20vim%20da%20p%C3%A1gina%20de%20vendas%20e%20estou%20com%20dificuldade%20em%20agendar%20a%20entrega" class="whatsapp-btn" target="_blank">
-            💬
-        </a>
+<section class="hero">
+    <h1>NOVA BEAUTY</h1>
+    <p>O Segredo das Células da Juventude</p>
+    <div class="video-wrapper">
+        <iframe src="https://player-vz-57c17c61-5f9.tv.pandavideo.com.br/embed/?v=31ca9b69-048b-4b05-ab21-8cb005ed5bc7" allowfullscreen></iframe>
     </div>
+</section>
 
+<section class="offer-section">
+    <h2>ESCOLHA O SEU TRATAMENTO</h2>
+    <div class="kits-container">
+        <div class="kit-card" onclick="iniciarFluxo('kit1')"><img src="kit1.jpg"></div>
+        <div class="kit-card kit-destaque" onclick="iniciarFluxo('kit2')"><img src="kit3.png"></div>
+        <div class="kit-card" onclick="iniciarFluxo('kit3')"><img src="kit5.jpg"></div>
+    </div>
+</section>
+
+<div id="modalCep" class="modal">
+    <div class="modal-content">
+        <h3 style="margin-top:0;">🚀 LIBERAR FRETE GRÁTIS</h3>
+        <p style="color: #666;">Digite seu CEP para validarmos a entrega rápida por Motoboy na sua região.</p>
+        <input type="text" id="cepInput" class="cep-input" placeholder="00000-000" maxlength="9">
+        <button class="btn-check" onclick="validarCEP()">VERIFICAR DISPONIBILIDADE</button>
+        <div id="loading">🔍 Analisando rotas logísticas...</div>
+    </div>
+</div>
+
+<script>
+    let kitAtivo = '';
+    let cepsBloqueados = new Set();
+    let cidadesAtendidas = new Set();
+
+    // CARREGA OS DADOS DOS ARQUIVOS JSON QUE VOCÊ SUBIU NO GITHUB
+    async function carregarDados() {
+        try {
+            const [bloqueados, cidades] = await Promise.all([
+                fetch('ceps-bloqueados.json').then(r => r.json()),
+                fetch('cidades-atendidas.json').then(r => r.json())
+            ]);
+            cepsBloqueados = new Set(bloqueados);
+            cidadesAtendidas = new Set(cidades);
+            console.log("Sistema de Logística Ativo.");
+        } catch (e) { console.error("Erro ao carregar arquivos de dados."); }
+    }
+    carregarDados();
+
+    const links = {
+        kit1: { 
+            logzz: "https://entrega.logzz.com.br/pay/mem65ko8o/1-serum-197?src=pv_logzz_kit1", 
+            braip: "https://pay.braip.co/ref?pl=plalg0mv&ck=che27mmq&af=afio8e3ln1&src=pv_braip_kit1" 
+        },
+        kit2: { 
+            logzz: "https://entrega.logzz.com.br/pay/mem65ko8o/3-potes-brinde?src=pv_logzz_kit2", 
+            braip: "https://pay.braip.co/ref?pl=pla24xp0&ck=che27mmq&af=afio8e3ln1&src=pv_braip_kit2" 
+        },
+        kit3: { 
+            logzz: "https://entrega.logzz.com.br/pay/mem65ko8o/upsell-297-49?src=pv_logzz_kit3", 
+            braip: "https://pay.braip.co/ref?pl=plaj09lr&ck=che27mmq&af=afio8e3ln1&src=pv_braip_kit3" 
+        }
+    };
+
+    function iniciarFluxo(kit) { kitAtivo = kit; document.getElementById('modalCep').style.display = 'flex'; }
+
+    async function validarCEP() {
+        const cep = document.getElementById('cepInput').value.replace(/\D/g, "");
+        if(cep.length !== 8) return alert("Digite um CEP válido.");
+        document.getElementById('loading').style.display = 'block';
+
+        // 🛡️ Filtro 1: Bloqueio Total (Áreas de Risco)
+        if(cepsBloqueados.has(cep)) { 
+            window.location.href = links[kitAtivo].braip; 
+            return; 
+        }
+
+        try {
+            const res = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+            const data = await res.json();
+            if(data.erro) throw new Error();
+
+            // 📍 Filtro 2: Cidade Atendida (Logzz)
+            const cidade = data.localidade.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+            
+            if(cidadesAtendidas.has(cidade)) { window.location.href = links[kitAtivo].logzz; }
+            else { window.location.href = links[kitAtivo].braip; }
+        } catch(e) { window.location.href = links[kitAtivo].braip; }
+    }
+
+    // Formatação automática do CEP
+    document.getElementById('cepInput').addEventListener('input', (e) => {
+        let v = e.target.value.replace(/\D/g, "");
+        if (v.length > 5) v = v.slice(0, 5) + "-" + v.slice(5, 8);
+        e.target.value = v;
+    });
+</script>
 </body>
 </html>
 
