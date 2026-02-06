@@ -3,90 +3,216 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NovaBeauty – Site Oficial</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <title>NovaBeauty – O Fim das Rugas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
     <style>
-        :root { --gold: #d4af37; --dark: #000; --white: #fff; --green: #28a745; }
-        body { font-family: 'Montserrat', sans-serif; margin: 0; background-color: var(--white); color: #333; overflow-x: hidden; }
-        .offer-section { padding: 60px 20px; text-align: center; background: #0c0c0c; }
-        .kits-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; max-width: 1200px; margin: 0 auto; }
-        .kit-card { width: 320px; cursor: pointer; transition: 0.4s; border-radius: 20px; overflow: hidden; border: 1px solid #222; position: relative; }
+        :root { --gold: #d4af37; --dark: #1a1a1a; --white: #fff; --green: #28a745; --text: #333; }
+        body { font-family: 'Montserrat', sans-serif; margin: 0; color: var(--text); background: #fff; line-height: 1.6; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; color: var(--dark); }
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+        .center { text-align: center; }
+
+        /* HERO - REATIVADO */
+        .hero { background: var(--dark); color: #fff; padding: 60px 0; text-align: center; }
+        .hero h1 { color: var(--gold); font-size: 2.5rem; margin-bottom: 10px; }
+        .video-wrapper { max-width: 800px; margin: 20px auto; background: #000; border: 2px solid var(--gold); border-radius: 10px; overflow: hidden; position: relative; padding-bottom: 56.25%; height: 0; }
+        .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+        /* BENEFICIOS - REATIVADO */
+        .benefits { padding: 60px 0; background: #fff; }
+        .benefits h2 { text-align: center; margin-bottom: 40px; }
+        .benefit-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+        .benefit-item { text-align: center; padding: 20px; border-radius: 10px; background: #f9f9f9; }
+        .benefit-item h3 { color: var(--gold); }
+
+        /* OFERTAS */
+        .offer-section { padding: 80px 0; background: var(--dark); color: #fff; text-align: center; }
+        .kits-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; }
+        .kit-card { width: 300px; cursor: pointer; transition: 0.4s; border-radius: 20px; overflow: hidden; border: 1px solid #333; position: relative; }
+        .kit-card:hover { transform: translateY(-15px); border-color: var(--gold); box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4); }
         .kit-card img { width: 100%; display: block; }
-        .kit-destaque { border: 2px solid var(--gold); transform: scale(1.05); z-index: 5; }
+        .kit-destaque { border: 2.5px solid var(--gold); transform: scale(1.05); }
+
+        /* FAQ - REATIVADO */
+        .faq { padding: 60px 0; background: #f9f9f9; }
+        .faq h2 { text-align: center; margin-bottom: 30px; }
+        details { background: #fff; margin-bottom: 10px; padding: 15px; border-radius: 5px; cursor: pointer; }
+        summary { font-weight: bold; outline: none; }
+
+        /* MODAL */
         .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.96); z-index: 10000; justify-content: center; align-items: center; }
-        .modal-content { background: #fff; padding: 40px; border-radius: 25px; width: 90%; max-width: 420px; text-align: center; border: 4px solid var(--gold); }
+        .modal-content { background: #fff; padding: 40px; border-radius: 25px; width: 90%; max-width: 420px; text-align: center; border: 4px solid var(--gold); color: #333; }
         .cep-input { width: 100%; padding: 18px; margin: 25px 0; border: 2px solid #eee; border-radius: 12px; font-size: 1.4rem; text-align: center; box-sizing: border-box; }
         .btn-check { background: var(--gold); color: #000; border: none; padding: 20px; width: 100%; font-weight: bold; border-radius: 50px; cursor: pointer; font-size: 1.1rem; text-transform: uppercase; }
+        
         #success-area { display: none; }
         .badge-brinde { background: var(--green); color: #fff; padding: 10px; border-radius: 10px; font-weight: bold; margin-bottom: 20px; animation: pulse 1.5s infinite; }
         @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+
+        /* WHATSAPP */
+        .whatsapp-btn { position: fixed; bottom: 20px; right: 20px; background: #25d366; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; color: #fff; text-decoration: none; z-index: 9999; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+
+        @media (max-width: 600px) { .hero h1 { font-size: 1.8rem; } .kit-card { width: 100%; } .kit-destaque { transform: scale(1); } }
     </style>
 </head>
 <body>
 
-<section class="offer-section">
-    <div class="kits-container">
-        <div class="kit-card" onclick="iniciarFluxo('kit1')"><img src="kit1.jpg"></div>
-        <div class="kit-card kit-destaque" onclick="iniciarFluxo('kit2')"><img src="kit3.jpg"></div>
-        <div class="kit-card" onclick="iniciarFluxo('kit3')"><img src="kit5.jpg"></div>
-    </div>
-</section>
+    <a href="https://wa.me/5562994593862" class="whatsapp-btn" target="_blank">💬</a>
 
-<div id="modalCep" class="modal">
-    <div class="modal-content">
-        <div id="step-search">
-            <h3 style="margin-top:0;">🚚 VERIFICAR FRETE GRÁTIS</h3>
-            <p>Informe seu CEP para calcular o prazo de entrega na sua região.</p>
-            <input type="text" id="cepInput" class="cep-input" placeholder="00000-000" maxlength="9">
-            <button class="btn-check" onclick="processarLogistica()">VERIFICAR CEP</button>
+    <section class="hero">
+        <div class="container">
+            <h1>RITUAL NOTURNO: O FIM DAS RUGAS</h1>
+            <p>Botox em casa, sem agulhas. Sinta sua pele jovem novamente.</p>
+            <div class="video-wrapper">
+                <iframe src="https://player-vz-57c17c61-5f9.tv.pandavideo.com.br/embed/?v=31ca9b69-048b-4b05-ab21-8cb005ed5bc7" allowfullscreen></iframe>
+            </div>
         </div>
-        <div id="success-area">
-            <div class="badge-brinde">🎁 BRINDE DISPONÍVEL!</div>
-            <h2 style="color: var(--green); margin-bottom: 10px;">BOA NOTÍCIA!</h2>
-            <p id="msg-entrega"></p>
-            <p style="font-size: 1.1rem;">Você acaba de ganhar <strong>+1 Frasco de Brinde</strong> nesta compra!</p>
-            <button class="btn-check" id="btn-finalizar" style="background: var(--green); color: #fff;">RESGATAR MEU BRINDE + FRETE GRÁTIS</button>
+    </section>
+
+    <section class="benefits">
+        <div class="container">
+            <h2>Por que escolher NovaBeauty?</h2>
+            <div class="benefit-grid">
+                <div class="benefit-item"><h3>Nano Resveratrol</h3><p>Tecnologia que penetra 10x mais fundo na pele.</p></div>
+                <div class="benefit-item"><h3>Ácido Hialurônico</h3><p>Preenchimento natural e hidratação intensa.</p></div>
+                <div class="benefit-item"><h3>Vitamina E</h3><p>Antioxidante potente contra o envelhecimento.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="ofertas" class="offer-section">
+        <div class="container">
+            <h2>ESCOLHA SEU TRATAMENTO</h2>
+            <div class="kits-container">
+                <div class="kit-card" onclick="iniciarFluxo('kit1')"><img src="kit1.jpg"></div>
+                <div class="kit-card kit-destaque" onclick="iniciarFluxo('kit2')"><img src="kit3.jpg"></div>
+                <div class="kit-card" onclick="iniciarFluxo('kit3')"><img src="kit5.jpg"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq">
+        <div class="container">
+            <h2>Perguntas Frequentes</h2>
+            <details><summary>Como devo usar?</summary><p>Aplique 2 vezes ao dia sobre a pele limpa.</p></details>
+            <details><summary>Tem garantia?</summary><p>Sim, 90 dias de garantia total.</p></details>
+            <details><summary>É aprovado pela Anvisa?</summary><p>Sim, registro nº 25351.050959/2024-12.</p></details>
+        </div>
+    </section>
+
+    <footer class="center" style="padding: 20px; background: #eee;">
+        <p>© 2026 NovaBeauty. Todos os direitos reservados.</p>
+    </footer>
+
+    <div id="modalCep" class="modal">
+        <div class="modal-content">
+            <div id="step-search">
+                <h3 style="margin-top:0;">🚚 VERIFICAR FRETE GRÁTIS</h3>
+                <p>Informe seu CEP para validar a entrega na sua região.</p>
+                <input type="text" id="cepInput" class="cep-input" placeholder="00000-000" maxlength="9">
+                <button class="btn-check" onclick="validarCEP()">VERIFICAR CEP</button>
+            </div>
+            <div id="success-area">
+                <div id="dynamic-content"></div>
+                <button class="btn-check" id="btn-finalizar" style="background: var(--green); color: #fff;">FINALIZAR PEDIDO</button>
+            </div>
         </div>
     </div>
-</div>
 
-<script>
-    let kitAtivo = '';
-    let cepsBloqueados = new Set();
-    let cidadesAtendidas = new Set();
-    let linkDestino = '';
+    <script>
+        let kitAtivo = '';
+        let cepsBloqueados = new Set();
+        let cidadesAtendidas = new Set();
+        let linkDestino = '';
 
-    async function carregarBases() {
-        try {
-            const [bloq, cidades] = await Promise.all([
-                fetch('ceps-bloqueados.json').then(r => r.json()),
-                fetch('cidades-atendidas.json').then(r => r.json())
-            ]);
-            cepsBloqueados = new Set(bloq);
-            cidadesAtendidas = new Set(cidades);
-        } catch (e) { console.error("Erro ao carregar bases de dados."); }
-    }
-    carregarBases();
+        async function carregarDados() {
+            try {
+                const [bloq, cidades] = await Promise.all([
+                    fetch('ceps-bloqueados.json').then(r => r.json()),
+                    fetch('cidades-atendidas.json').then(r => r.json())
+                ]);
+                cepsBloqueados = new Set(bloq);
+                cidadesAtendidas = new Set(cidades);
+            } catch (e) { console.error("Erro ao carregar bases."); }
+        }
+        carregarDados();
 
-    const links = {
-        kit1: { logzz: "https://entrega.logzz.com.br/pay/mem65ko8o/1-serum-197?src=pv_logzz_kit1", braip: "https://pay.braip.co/ref?pl=plalg0mv&ck=che27mmq&af=afio8e3ln1&src=pv_braip_kit1" },
-        kit2: { logzz: "https://entrega.logzz.com.br/pay/mem65ko8o/3-potes-brinde?src=pv_logzz_kit2", braip: "https://pay.braip.co/ref?pl=pla24xp0&ck=che27mmq&af=afio8e3ln1&src=pv_braip_kit2" },
-        kit3: { logzz: "https://entrega.logzz.com.br/pay/mem65ko8o/upsell-297-49?src=pv_logzz_kit3", braip: "https://pay.braip.co/ref?pl=plaj09lr&ck=che27mmq&af=afio8e3ln1&src=pv_braip_kit3" }
-    };
+        const links = {
+            kit1: { logzz: "https://entrega.logzz.com.br/pay/mem65ko8o/1-serum-197?src=pv_logzz_kit1", braip: "https://pay.braip.co/ref?pl=plalg0mv&ck=che27mmq&af=afio8e3ln1&src=pv_braip_kit1" },
+            kit2: { logzz: "https://entrega.logzz.com.br/pay/mem65ko8o/3-potes-brinde?src=pv_logzz_kit2", braip: "https://pay.braip.co/ref?pl=pla24xp0&ck=che27mmq&af=afio8e3ln1&src=pv_braip_kit2" },
+            kit3: { logzz: "https://entrega.logzz.com.br/pay/mem65ko8o/upsell-297-49?src=pv_logzz_kit3", braip: "https://pay.braip.co/ref?pl=plaj09lr&ck=che27mmq&af=afio8e3ln1&src=pv_braip_kit3" }
+        };
 
-    function iniciarFluxo(kit) { 
-        kitAtivo = kit; 
-        document.getElementById('step-search').style.display = 'block';
-        document.getElementById('success-area').style.display = 'none';
-        document.getElementById('modalCep').style.display = 'flex'; 
-    }
+        function iniciarFluxo(kit) { 
+            kitAtivo = kit; 
+            document.getElementById('step-search').style.display = 'block';
+            document.getElementById('success-area').style.display = 'none';
+            document.getElementById('modalCep').style.display = 'flex'; 
+        }
 
-    async function processarLogistica() {
-        const cep = document.getElementById('cepInput').value.replace(/\D/g, "");
-        if(cep.length !== 8) return alert("CEP inválido.");
-        let isBraip = false;
-        let msg = "";
-        if(cepsBloqueados.has(cep)) {
+        async function validarCEP() {
+            const cep = document.getElementById('cepInput').value.replace(/\D/g, "");
+            if(cep.length !== 8) return alert("CEP inválido.");
+            
+            let isBraip = false;
+            let msgRegiao = "";
+
+            if(cepsBloqueados.has(cep)) {
+                isBraip = true;
+                msgRegiao = "Sua região é atendida via <strong>Envio Prioritário</strong>.";
+            } else {
+                try {
+                    const res = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+                    const data = await res.json();
+                    const cidade = data.localidade.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+                    if(cidadesAtendidas.has(cidade)) {
+                        msgRegiao = "Sua região possui <strong>Entrega Expressa</strong> disponível!";
+                    } else {
+                        isBraip = true;
+                        msgRegiao = "Sua região é atendida via <strong>Envio Prioritário</strong>.";
+                    }
+                } catch(e) { isBraip = true; msgRegiao = "Sua região é atendida via <strong>Envio Prioritário</strong>."; }
+            }
+
+            linkDestino = isBraip ? links[kitAtivo].braip : links[kitAtivo].logzz;
+            
+            // LÓGICA DE BRINDE EXCLUSIVA PARA O KIT 2
+            let htmlSucesso = "";
+            if (kitAtivo === 'kit2') {
+                htmlSucesso = `
+                    <div class="badge-brinde">🎁 BRINDE DISPONÍVEL!</div>
+                    <h2 style="color: var(--green); margin-bottom: 10px;">BOA NOTÍCIA!</h2>
+                    <p>${msgRegiao}</p>
+                    <p style="font-size: 1.1rem;">Você acaba de ganhar <strong>+1 Frasco de Brinde</strong> nesta compra!</p>
+                `;
+                document.getElementById('btn-finalizar').innerText = "RESGATAR MEU BRINDE";
+            } else {
+                htmlSucesso = `
+                    <div class="badge-brinde" style="background: var(--gold);">✅ FRETE GRÁTIS LIBERADO!</div>
+                    <h2 style="color: var(--dark); margin-bottom: 10px;">TUDO PRONTO!</h2>
+                    <p>${msgRegiao}</p>
+                    <p>Sua oferta está reservada. Clique abaixo para finalizar seu pedido.</p>
+                `;
+                document.getElementById('btn-finalizar').innerText = "FINALIZAR PEDIDO";
+            }
+
+            document.getElementById('dynamic-content').innerHTML = htmlSucesso;
+            document.getElementById('step-search').style.display = 'none';
+            document.getElementById('success-area').style.display = 'block';
+        }
+
+        document.getElementById('btn-finalizar').onclick = function() { window.location.href = linkDestino; };
+
+        document.getElementById('cepInput').addEventListener('input', (e) => {
+            let v = e.target.value.replace(/\D/g, "");
+            if (v.length > 5) v = v.slice(0, 5) + "-" + v.slice(5, 8);
+            e.target.value = v;
+        });
+    </script>
+</body>
+</html>
             isBraip = true;
             msg = "Sua região é atendida via <strong>Envio Prioritário (Correios)</strong>.";
         } else {
