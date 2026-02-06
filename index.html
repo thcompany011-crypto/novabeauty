@@ -1,65 +1,86 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NovaBeauty – O Fim das Rugas</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
-    <style>
-        :root { --gold: #d4af37; --dark: #1a1a1a; --white: #fff; --green: #28a745; --text: #333; }
-        body { font-family: 'Montserrat', sans-serif; margin: 0; color: var(--text); background: #fff; line-height: 1.6; }
-        h1, h2, h3 { font-family: 'Playfair Display', serif; color: var(--dark); }
-        .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
-        .center { text-align: center; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NovaBeauty – O Fim das Rugas</title>
 
-        /* HERO - REATIVADO */
-        .hero { background: var(--dark); color: #fff; padding: 60px 0; text-align: center; }
-        .hero h1 { color: var(--gold); font-size: 2.5rem; margin-bottom: 10px; }
-        .video-wrapper { max-width: 800px; margin: 20px auto; background: #000; border: 2px solid var(--gold); border-radius: 10px; overflow: hidden; position: relative; padding-bottom: 56.25%; height: 0; }
-        .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
 
-        /* BENEFICIOS - REATIVADO */
-        .benefits { padding: 60px 0; background: #fff; }
-        .benefits h2 { text-align: center; margin-bottom: 40px; }
-        .benefit-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
-        .benefit-item { text-align: center; padding: 20px; border-radius: 10px; background: #f9f9f9; }
-        .benefit-item h3 { color: var(--gold); }
+<style>
+/* --- ESTILOS ORIGINAIS RESTAURADOS --- */
+:root {
+    --gold: #d4af37;
+    --dark: #1a1a1a;
+    --gray: #f9f9f9;
+    --text: #333;
+    --green: #28a745;
+}
 
-        /* OFERTAS */
-        .offer-section { padding: 80px 0; background: var(--dark); color: #fff; text-align: center; }
-        .kits-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; }
-        .kit-card { width: 300px; cursor: pointer; transition: 0.4s; border-radius: 20px; overflow: hidden; border: 1px solid #333; position: relative; }
-        .kit-card:hover { transform: translateY(-15px); border-color: var(--gold); box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4); }
-        .kit-card img { width: 100%; display: block; }
-        .kit-destaque { border: 2.5px solid var(--gold); transform: scale(1.05); }
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: var(--text);
+    background-color: #fff;
+    line-height: 1.6;
+}
 
-        /* FAQ - REATIVADO */
-        .faq { padding: 60px 0; background: #f9f9f9; }
-        .faq h2 { text-align: center; margin-bottom: 30px; }
-        details { background: #fff; margin-bottom: 10px; padding: 15px; border-radius: 5px; cursor: pointer; }
-        summary { font-weight: bold; outline: none; }
+h1, h2, h3 { font-family: 'Playfair Display', serif; color: var(--dark); }
 
-        /* MODAL */
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.96); z-index: 10000; justify-content: center; align-items: center; }
-        .modal-content { background: #fff; padding: 40px; border-radius: 25px; width: 90%; max-width: 420px; text-align: center; border: 4px solid var(--gold); color: #333; }
-        .cep-input { width: 100%; padding: 18px; margin: 25px 0; border: 2px solid #eee; border-radius: 12px; font-size: 1.4rem; text-align: center; box-sizing: border-box; }
-        .btn-check { background: var(--gold); color: #000; border: none; padding: 20px; width: 100%; font-weight: bold; border-radius: 50px; cursor: pointer; font-size: 1.1rem; text-transform: uppercase; }
-        
-        #success-area { display: none; }
-        .badge-brinde { background: var(--green); color: #fff; padding: 10px; border-radius: 10px; font-weight: bold; margin-bottom: 20px; animation: pulse 1.5s infinite; }
-        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+.container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
 
-        /* WHATSAPP */
-        .whatsapp-btn { position: fixed; bottom: 20px; right: 20px; background: #25d366; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; color: #fff; text-decoration: none; z-index: 9999; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+/* HERO */
+.hero { background-color: var(--dark); color: #fff; padding: 60px 0; text-align: center; }
+.hero h1 { color: var(--gold); font-size: 2.5rem; margin-bottom: 10px; }
+.video-wrapper { max-width: 800px; margin: 20px auto; background: #000; border: 2px solid var(--gold); border-radius: 10px; overflow: hidden; position: relative; padding-bottom: 56.25%; height: 0; }
+.video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
-        @media (max-width: 600px) { .hero h1 { font-size: 1.8rem; } .kit-card { width: 100%; } .kit-destaque { transform: scale(1); } }
-    </style>
+/* BENEFÍCIOS */
+.benefits { padding: 60px 0; background-color: #fff; }
+.benefit-item { text-align: center; padding: 20px; }
+.benefit-item h3 { color: var(--gold); margin-bottom: 10px; }
+
+/* OFERTAS */
+.offers { background-color: var(--dark); padding: 80px 0; color: #fff; text-align: center; }
+.offers h2 { color: #fff; margin-bottom: 40px; }
+.kits-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; }
+.kit-card { width: 300px; cursor: pointer; transition: 0.4s; border-radius: 20px; overflow: hidden; border: 1px solid #333; position: relative; }
+.kit-card:hover { transform: translateY(-15px); border-color: var(--gold); }
+.kit-card img { width: 100%; display: block; }
+.kit-destaque { border: 2.5px solid var(--gold); transform: scale(1.05); }
+
+/* FAQ */
+.faq { padding: 80px 0; background-color: var(--gray); }
+.faq h2 { text-align: center; margin-bottom: 40px; }
+details { background: #fff; margin-bottom: 10px; padding: 20px; border-radius: 8px; cursor: pointer; border: 1px solid #eee; }
+summary { font-weight: bold; font-size: 1.1rem; }
+
+/* RODAPÉ ORIGINAL */
+footer { background-color: #f1f1f1; padding: 40px 20px; text-align: center; font-size: 0.9rem; color: #666; border-top: 1px solid #ddd; }
+footer p { margin: 5px 0; }
+
+/* MODAL DE LOGÍSTICA */
+.modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.96); z-index: 10000; justify-content: center; align-items: center; }
+.modal-content { background: #fff; padding: 40px; border-radius: 25px; width: 90%; max-width: 420px; text-align: center; border: 4px solid var(--gold); color: #333; }
+.cep-input { width: 100%; padding: 18px; margin: 25px 0; border: 2px solid #eee; border-radius: 12px; font-size: 1.4rem; text-align: center; box-sizing: border-box; }
+.btn-check { background: var(--gold); color: #000; border: none; padding: 20px; width: 100%; font-weight: bold; border-radius: 50px; cursor: pointer; font-size: 1.1rem; text-transform: uppercase; }
+#success-area { display: none; }
+.badge-brinde { background: var(--green); color: #fff; padding: 10px; border-radius: 10px; font-weight: bold; margin-bottom: 20px; animation: pulse 1.5s infinite; }
+@keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+
+/* WHATSAPP BALLOON */
+.whatsapp-wrapper { position: fixed; bottom: 20px; right: 20px; z-index: 999; display: flex; flex-direction: column; align-items: flex-end; }
+.whatsapp-balloon { background: #fff; padding: 10px 15px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-bottom: 10px; font-size: 0.9rem; font-weight: 600; border: 1px solid #eee; position: relative; }
+.whatsapp-balloon::after { content: ''; position: absolute; bottom: -8px; right: 20px; border-left: 8px solid transparent; border-right: 8px solid transparent; border-top: 8px solid #fff; }
+.whatsapp-icon { background: #25d366; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(0,0,0,0.3); text-decoration: none; }
+
+@media (max-width: 600px) { .kit-card { width: 100%; } .kit-destaque { transform: scale(1); } }
+</style>
 </head>
 <body>
-
-    <a href="https://wa.me/5562994593862" class="whatsapp-btn" target="_blank">💬</a>
 
     <section class="hero">
         <div class="container">
@@ -71,18 +92,7 @@
         </div>
     </section>
 
-    <section class="benefits">
-        <div class="container">
-            <h2>Por que escolher NovaBeauty?</h2>
-            <div class="benefit-grid">
-                <div class="benefit-item"><h3>Nano Resveratrol</h3><p>Tecnologia que penetra 10x mais fundo na pele.</p></div>
-                <div class="benefit-item"><h3>Ácido Hialurônico</h3><p>Preenchimento natural e hidratação intensa.</p></div>
-                <div class="benefit-item"><h3>Vitamina E</h3><p>Antioxidante potente contra o envelhecimento.</p></div>
-            </div>
-        </div>
-    </section>
-
-    <section id="ofertas" class="offer-section">
+    <section id="ofertas" class="offers">
         <div class="container">
             <h2>ESCOLHA SEU TRATAMENTO</h2>
             <div class="kits-container">
@@ -96,21 +106,31 @@
     <section class="faq">
         <div class="container">
             <h2>Perguntas Frequentes</h2>
-            <details><summary>Como devo usar?</summary><p>Aplique 2 vezes ao dia sobre a pele limpa.</p></details>
-            <details><summary>Tem garantia?</summary><p>Sim, 90 dias de garantia total.</p></details>
-            <details><summary>É aprovado pela Anvisa?</summary><p>Sim, registro nº 25351.050959/2024-12.</p></details>
+            <details><summary>Como devo usar?</summary><p>Aplique 2 vezes ao dia sobre a pele limpa e seca.</p></details>
+            <details><summary>Em quanto tempo vejo resultados?</summary><p>Resultados visíveis de firmeza e redução de rugas a partir de 30 dias.</p></details>
+            <details><summary>É seguro? Tem Anvisa?</summary><p>Sim! Aprovado pela ANVISA sob o número 25351.050959/2024-12.</p></details>
         </div>
     </section>
 
-    <footer class="center" style="padding: 20px; background: #eee;">
+    <footer>
         <p>© 2026 NovaBeauty. Todos os direitos reservados.</p>
+        <p>Site Seguro. Entrega garantida nas áreas atendidas.</p>
+        <br>
+        <small>Os resultados podem variar de pessoa para pessoa.</small>
     </footer>
+
+    <div class="whatsapp-wrapper">
+        <div class="whatsapp-balloon">Tem alguma dúvida?</div>
+        <a href="https://wa.me/5562994593862" class="whatsapp-icon" target="_blank">
+            <svg viewBox="0 0 32 32" style="width:35px; fill:#fff;"><path d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.475 2.037 7.787l-2.037 7.425 7.6-1.987c2.15 1.187 4.625 1.863 7.275 1.863 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.387c-2.4 0-4.637-0.612-6.6-1.687l-0.475-0.25-4.487 1.175 1.2-4.35-0.275-0.45c-1.175-1.925-1.85-4.187-1.85-6.6 0-7.05 5.737-12.787 12.787-12.787s12.787 5.737 12.787 12.787c0 7.05-5.737 12.787-12.787 12.787zM22.513 18.7c-0.35-0.175-2.087-1.025-2.412-1.15s-0.562-0.175-0.8 0.175-0.913 1.15-1.125 1.387-0.412 0.25-0.762 0.075c-0.35-0.175-1.475-0.55-2.812-1.737-1.037-0.925-1.737-2.063-1.937-2.412s-0.025-0.537 0.15-0.712c0.15-0.162 0.35-0.412 0.525-0.612s0.225-0.337 0.35-0.562 0.050-0.425-0.025-0.6-0.562-1.35-0.775-1.85-0.412-0.412-0.562-0.412h-0.487c-0.175 0-0.45 0.062-0.687 0.325s-0.913 0.887-0.913 2.162 0.925 2.512 1.050 2.687c0.137 0.175 1.825 2.787 4.412 3.9 0.612 0.262 1.087 0.425 1.462 0.55 0.612 0.2 1.175 0.175 1.612 0.112 0.487-0.075 1.5-0.612 1.712-1.2s0.212-1.1 0.15-1.2c-0.062-0.1-0.225-0.175-0.575-0.35z"></path></svg>
+        </a>
+    </div>
 
     <div id="modalCep" class="modal">
         <div class="modal-content">
             <div id="step-search">
                 <h3 style="margin-top:0;">🚚 VERIFICAR FRETE GRÁTIS</h3>
-                <p>Informe seu CEP para validar a entrega na sua região.</p>
+                <p>Informe seu CEP para calcular o prazo de entrega.</p>
                 <input type="text" id="cepInput" class="cep-input" placeholder="00000-000" maxlength="9">
                 <button class="btn-check" onclick="validarCEP()">VERIFICAR CEP</button>
             </div>
@@ -178,7 +198,6 @@
 
             linkDestino = isBraip ? links[kitAtivo].braip : links[kitAtivo].logzz;
             
-            // LÓGICA DE BRINDE EXCLUSIVA PARA O KIT 2
             let htmlSucesso = "";
             if (kitAtivo === 'kit2') {
                 htmlSucesso = `
@@ -213,33 +232,4 @@
     </script>
 </body>
 </html>
-            isBraip = true;
-            msg = "Sua região é atendida via <strong>Envio Prioritário (Correios)</strong>.";
-        } else {
-            try {
-                const res = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
-                const data = await res.json();
-                const cidade = data.localidade.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-                if(cidadesAtendidas.has(cidade)) {
-                    isBraip = false;
-                    msg = "Sua região possui <strong>Entrega Expressa por Motoboy</strong> disponível!";
-                } else {
-                    isBraip = true;
-                    msg = "Sua região é atendida via <strong>Envio Prioritário (Correios)</strong>.";
-                }
-            } catch(e) { isBraip = true; msg = "Sua região é atendida via <strong>Envio Prioritário (Correios)</strong>."; }
-        }
-        linkDestino = isBraip ? links[kitAtivo].braip : links[kitAtivo].logzz;
-        document.getElementById('msg-entrega').innerHTML = msg;
-        document.getElementById('step-search').style.display = 'none';
-        document.getElementById('success-area').style.display = 'block';
-    }
-    document.getElementById('btn-finalizar').onclick = function() { window.location.href = linkDestino; };
-    document.getElementById('cepInput').addEventListener('input', (e) => {
-        let v = e.target.value.replace(/\D/g, "");
-        if (v.length > 5) v = v.slice(0, 5) + "-" + v.slice(5, 8);
-        e.target.value = v;
-    });
-</script>
-</body>
-</html>
+
