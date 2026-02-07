@@ -41,6 +41,7 @@
         --gray: #f9f9f9;
         --text: #333;
         --green: #28a745;
+        --accent-red: #e74c3c;
     }
 
     body {
@@ -69,12 +70,53 @@
 
     /* OFERTAS */
     .offers { background-color: var(--dark); padding: 80px 0; color: #fff; text-align: center; }
-    .offers h2 { color: #fff; margin-bottom: 40px; }
-    .kits-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; }
-    .kit-card { width: 300px; cursor: pointer; transition: 0.4s; border-radius: 20px; overflow: hidden; border: 1px solid #333; position: relative; }
-    .kit-card:hover { transform: translateY(-15px); border-color: var(--gold); }
-    .kit-card img { width: 100%; display: block; }
-    .kit-destaque { border: 2.5px solid var(--gold); transform: scale(1.05); }
+    .offers h2 { color: #fff; margin-bottom: 60px; }
+    .kits-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; }
+    
+    .kit-card { 
+        width: 300px; 
+        cursor: pointer; 
+        transition: 0.4s; 
+        border-radius: 20px; 
+        overflow: visible; 
+        border: 1px solid #333; 
+        position: relative; 
+        background: #222;
+    }
+    
+    .kit-card:hover { transform: translateY(-10px); }
+    .kit-card img { width: 100%; border-radius: 20px; display: block; }
+
+    /* MOLDURA E TEXTO CHAMATIVO (KIT DESTAQUE) */
+    .kit-destaque { 
+        border: 3px solid var(--gold) !important; 
+        transform: scale(1.08); 
+        box-shadow: 0 0 25px rgba(212, 175, 55, 0.5);
+    }
+    
+    .kit-promo-label {
+        background: var(--accent-red);
+        color: #fff;
+        font-size: 0.8rem;
+        font-weight: 800;
+        padding: 6px 18px;
+        border-radius: 50px;
+        position: absolute;
+        top: -18px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 100;
+        white-space: nowrap;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+        animation: pulsePromo 2s infinite;
+        letter-spacing: 0.5px;
+    }
+
+    @keyframes pulsePromo {
+        0% { transform: translateX(-50%) scale(1); }
+        50% { transform: translateX(-50%) scale(1.1); background: #ff0000; }
+        100% { transform: translateX(-50%) scale(1); }
+    }
 
     /* FAQ */
     .faq { padding: 80px 0; background-color: var(--gray); }
@@ -95,13 +137,17 @@
     .badge-brinde { background: var(--green); color: #fff; padding: 10px; border-radius: 10px; font-weight: bold; margin-bottom: 20px; animation: pulse 1.5s infinite; }
     @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
 
-    /* WHATSAPP BALLOON */
+    /* WHATSAPP */
     .whatsapp-wrapper { position: fixed; bottom: 20px; right: 20px; z-index: 999; display: flex; flex-direction: column; align-items: flex-end; }
     .whatsapp-balloon { background: #fff; padding: 10px 15px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-bottom: 10px; font-size: 0.9rem; font-weight: 600; border: 1px solid #eee; position: relative; }
     .whatsapp-balloon::after { content: ''; position: absolute; bottom: -8px; right: 20px; border-left: 8px solid transparent; border-right: 8px solid transparent; border-top: 8px solid #fff; }
     .whatsapp-icon { background: #25d366; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(0,0,0,0.3); text-decoration: none; }
 
-    @media (max-width: 600px) { .kit-card { width: 100%; } .kit-destaque { transform: scale(1); } }
+    @media (max-width: 600px) { 
+        .kits-container { gap: 60px; }
+        .kit-card { width: 100%; } 
+        .kit-destaque { transform: scale(1); } 
+    }
   </style>
 </head>
 <body>
@@ -120,9 +166,18 @@
         <div class="container">
             <h2>ESCOLHA SEU TRATAMENTO</h2>
             <div class="kits-container">
-                <div class="kit-card" onclick="iniciarFluxo('kit1')"><img src="kit1.jpg"></div>
-                <div class="kit-card kit-destaque" onclick="iniciarFluxo('kit2')"><img src="kit3.jpg"></div>
-                <div class="kit-card" onclick="iniciarFluxo('kit3')"><img src="kit5.jpg"></div>
+                <div class="kit-card" onclick="iniciarFluxo('kit1')">
+                    <img src="kit1.jpg">
+                </div>
+
+                <div class="kit-card kit-destaque" onclick="iniciarFluxo('kit2')">
+                    <div class="kit-promo-label">🔥 MAIS VENDIDO - RECOMENDADO</div>
+                    <img src="generated-image-2026-02-05-21-52-05.png.jpg">
+                </div>
+
+                <div class="kit-card" onclick="iniciarFluxo('kit3')">
+                    <img src="kit5.jpg">
+                </div>
             </div>
         </div>
     </section>
@@ -246,7 +301,6 @@
             document.getElementById('success-area').style.display = 'block';
         }
 
-        // Configuração final do botão de compra com rastreamento
         document.getElementById('btn-finalizar').onclick = function() { 
             return gtag_report_conversion(linkDestino); 
         };
