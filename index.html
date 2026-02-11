@@ -28,7 +28,7 @@
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NovaBeauty – O Fim das Rugas</title>
+  <title>NovaBeauty – A Ciência do Resveratrol</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -59,18 +59,37 @@
 
     /* HERO */
     .hero { background-color: var(--dark); color: #fff; padding: 60px 0; text-align: center; }
-    .hero h1 { color: var(--gold); font-size: 2.5rem; margin-bottom: 10px; }
-    .video-wrapper { max-width: 800px; margin: 20px auto; background: #000; border: 2px solid var(--gold); border-radius: 10px; overflow: hidden; position: relative; padding-bottom: 56.25%; height: 0; }
-    .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+    .hero h1 { color: var(--gold); font-size: 2.6rem; margin-bottom: 10px; line-height: 1.2; }
+    .hero p { font-size: 1.2rem; opacity: 0.9; }
+    
+    .video-wrapper { 
+        max-width: 800px; 
+        margin: 30px auto; 
+        background: #000; 
+        border: 2px solid var(--gold); 
+        border-radius: 15px; 
+        overflow: hidden; 
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    .video-wrapper video { width: 100%; height: auto; display: block; }
 
-    /* BENEFÍCIOS */
-    .benefits { padding: 60px 0; background-color: #fff; }
-    .benefit-item { text-align: center; padding: 20px; }
-    .benefit-item h3 { color: var(--gold); margin-bottom: 10px; }
+    /* SELOS DE AUTORIDADE */
+    .trust-bar { background: #f1f1f1; padding: 20px 0; border-bottom: 1px solid #ddd; }
+    .trust-container { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px; text-align: center; }
+    .trust-item { font-size: 0.8rem; font-weight: 700; color: #666; display: flex; flex-direction: column; align-items: center; }
+    .trust-item i { font-size: 1.5rem; margin-bottom: 5px; color: var(--gold); }
 
-    /* OFERTAS */
+    /* TABELA COMPARATIVA */
+    .comparison-section { padding: 80px 0; background: #fff; }
+    .comparison-table { width: 100%; border-collapse: collapse; margin-top: 30px; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+    .comparison-table th { background: var(--dark); color: #fff; padding: 20px; text-align: center; }
+    .comparison-table td { padding: 15px; border-bottom: 1px solid #eee; text-align: center; }
+    .check-yes { color: var(--green); font-weight: bold; }
+    .check-no { color: var(--accent-red); font-weight: bold; }
+
+    /* OFERTAS REFINADAS */
     .offers { background-color: var(--dark); padding: 80px 0; color: #fff; text-align: center; }
-    .offers h2 { color: #fff; margin-bottom: 60px; }
+    .offers h2 { color: #fff; margin-bottom: 60px; font-size: 2.2rem; }
     .kits-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; }
     
     .kit-card { 
@@ -78,72 +97,59 @@
         cursor: pointer; 
         transition: 0.4s; 
         border-radius: 20px; 
-        overflow: visible; 
         border: 1px solid #333; 
         position: relative; 
-        background: #222;
+        background: radial-gradient(circle at top, #333 0%, #1a1a1a 100%);
+        padding-bottom: 20px;
     }
     
-    .kit-card:hover { transform: translateY(-10px); }
-    .kit-card img { width: 100%; border-radius: 20px; display: block; }
+    .kit-card:hover { transform: translateY(-10px); box-shadow: 0 10px 20px rgba(0,0,0,0.4); border-color: var(--gold); }
+    .kit-card img { width: 100%; border-radius: 20px 20px 0 0; }
+    .price-info { padding: 15px; }
+    .price-installment { color: var(--gold); font-size: 1.4rem; font-weight: 800; display: block; }
+    .price-total { font-size: 0.9rem; opacity: 0.7; }
 
-    /* MOLDURA E TEXTO CHAMATIVO (KIT DESTAQUE) */
-    .kit-destaque { 
-        border: 3px solid var(--gold) !important; 
-        transform: scale(1.08); 
-        box-shadow: 0 0 25px rgba(212, 175, 55, 0.5);
-    }
+    .kit-destaque { border: 3px solid var(--gold) !important; transform: scale(1.08); box-shadow: 0 0 25px rgba(212, 175, 55, 0.5); }
     
     .kit-promo-label {
         background: var(--accent-red);
-        color: #fff;
-        font-size: 0.8rem;
-        font-weight: 800;
-        padding: 6px 18px;
-        border-radius: 50px;
-        position: absolute;
-        top: -18px;
-        left: 50%;
-        transform: translateX(-50%);
-        z-index: 100;
-        white-space: nowrap;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+        color: #fff; font-size: 0.8rem; font-weight: 800; padding: 6px 18px; border-radius: 50px;
+        position: absolute; top: -18px; left: 50%; transform: translateX(-50%); z-index: 100;
         animation: pulsePromo 2s infinite;
-        letter-spacing: 0.5px;
     }
 
     @keyframes pulsePromo {
         0% { transform: translateX(-50%) scale(1); }
-        50% { transform: translateX(-50%) scale(1.1); background: #ff0000; }
+        50% { transform: translateX(-50%) scale(1.1); }
         100% { transform: translateX(-50%) scale(1); }
     }
 
     /* FAQ */
     .faq { padding: 80px 0; background-color: var(--gray); }
-    .faq h2 { text-align: center; margin-bottom: 40px; }
     details { background: #fff; margin-bottom: 10px; padding: 20px; border-radius: 8px; cursor: pointer; border: 1px solid #eee; }
-    summary { font-weight: bold; font-size: 1.1rem; }
 
-    /* RODAPÉ */
-    footer { background-color: #f1f1f1; padding: 40px 20px; text-align: center; font-size: 0.9rem; color: #666; border-top: 1px solid #ddd; }
-    footer p { margin: 5px 0; }
+    /* WHATSAPP PULSE */
+    .whatsapp-wrapper { position: fixed; bottom: 20px; right: 20px; z-index: 999; display: flex; flex-direction: column; align-items: flex-end; }
+    .whatsapp-icon { 
+        background: #25d366; width: 60px; height: 60px; border-radius: 50%; 
+        display: flex; align-items: center; justify-content: center; 
+        box-shadow: 0 4px 15px rgba(0,0,0,0.3); text-decoration: none;
+        transition: all 0.3s ease;
+        animation: pulse-green 2s infinite;
+    }
+    @keyframes pulse-green {
+        0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+        70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+    }
 
-    /* MODAL DE LOGÍSTICA */
+    /* MODAL */
     .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.96); z-index: 10000; justify-content: center; align-items: center; }
     .modal-content { background: #fff; padding: 40px; border-radius: 25px; width: 90%; max-width: 420px; text-align: center; border: 4px solid var(--gold); color: #333; }
-    .cep-input { width: 100%; padding: 18px; margin: 25px 0; border: 2px solid #eee; border-radius: 12px; font-size: 1.4rem; text-align: center; box-sizing: border-box; }
-    .btn-check { background: var(--gold); color: #000; border: none; padding: 20px; width: 100%; font-weight: bold; border-radius: 50px; cursor: pointer; font-size: 1.1rem; text-transform: uppercase; }
-    #success-area { display: none; }
-    .badge-brinde { background: var(--green); color: #fff; padding: 10px; border-radius: 10px; font-weight: bold; margin-bottom: 20px; animation: pulse 1.5s infinite; }
-    @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
-
-    /* WHATSAPP */
-    .whatsapp-wrapper { position: fixed; bottom: 20px; right: 20px; z-index: 999; display: flex; flex-direction: column; align-items: flex-end; }
-    .whatsapp-balloon { background: #fff; padding: 10px 15px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-bottom: 10px; font-size: 0.9rem; font-weight: 600; border: 1px solid #eee; position: relative; }
-    .whatsapp-balloon::after { content: ''; position: absolute; bottom: -8px; right: 20px; border-left: 8px solid transparent; border-right: 8px solid transparent; border-top: 8px solid #fff; }
-    .whatsapp-icon { background: #25d366; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(0,0,0,0.3); text-decoration: none; }
+    .btn-check { background: var(--gold); color: #000; border: none; padding: 20px; width: 100%; font-weight: bold; border-radius: 50px; cursor: pointer; text-transform: uppercase; }
 
     @media (max-width: 600px) { 
+        .hero h1 { font-size: 1.8rem; }
         .kits-container { gap: 60px; }
         .kit-card { width: 100%; } 
         .kit-destaque { transform: scale(1); } 
@@ -154,11 +160,59 @@
 
     <section class="hero">
         <div class="container">
-            <h1>RITUAL NOTURNO: O FIM DAS RUGAS</h1>
-            <p>Botox em casa, sem agulhas. Sinta sua pele jovem novamente.</p>
+            <h1>A CIÊNCIA DO RESVERATROL: RECUPERE A FIRMEZA DA SUA PELE ENQUANTO VOCÊ DORME</h1>
+            <p>O segredo da juventude celular em gotas. Sem agulhas, sem dor.</p>
             <div class="video-wrapper">
-                <iframe src="https://player-vz-57c17c61-5f9.tv.pandavideo.com.br/embed/?v=31ca9b69-048b-4b05-ab21-8cb005ed5bc7" allowfullscreen></iframe>
+                <video autoplay loop muted playsinline>
+                    <source src="https://videos.pexels.com/video-files/30978201/13054174_3840_2160_30fps.mp4" type="video/mp4">
+                </video>
             </div>
+        </div>
+    </section>
+
+    <div class="trust-bar">
+        <div class="container trust-container">
+            <div class="trust-item"><span>🛡️ APROVADO ANVISA</span></div>
+            <div class="trust-item"><span>🐰 CRUELTY FREE</span></div>
+            <div class="trust-item"><span>🔬 DERMATOLOGICAMENTE TESTADO</span></div>
+            <div class="trust-item"><span>🚚 FRETE GRÁTIS HOJE</span></div>
+        </div>
+    </div>
+
+    <section class="comparison-section">
+        <div class="container">
+            <h2 style="text-align:center;">Por que o NovaBeauty é superior?</h2>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Característica</th>
+                        <th>NovaBeauty</th>
+                        <th>Cremes Comuns</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Resveratrol Puro em Nanotecnologia</td>
+                        <td class="check-yes">SIM ✅</td>
+                        <td class="check-no">NÃO ❌</td>
+                    </tr>
+                    <tr>
+                        <td>Absorção nas Camadas Profundas</td>
+                        <td class="check-yes">SIM ✅</td>
+                        <td class="check-no">NÃO ❌</td>
+                    </tr>
+                    <tr>
+                        <td>Textura Leve (Não Oleosa)</td>
+                        <td class="check-yes">SIM ✅</td>
+                        <td class="check-no">NÃO ❌</td>
+                    </tr>
+                    <tr>
+                        <td>Garantia de Satisfação de 30 Dias</td>
+                        <td class="check-yes">SIM ✅</td>
+                        <td class="check-no">NÃO ❌</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </section>
 
@@ -168,15 +222,27 @@
             <div class="kits-container">
                 <div class="kit-card" onclick="iniciarFluxo('kit1')">
                     <img src="kit1.jpg">
+                    <div class="price-info">
+                        <span class="price-installment">12x R$ 19,78</span>
+                        <span class="price-total">ou R$ 197,00 à vista</span>
+                    </div>
                 </div>
 
                 <div class="kit-card kit-destaque" onclick="iniciarFluxo('kit2')">
-                    <div class="kit-promo-label">🎁 LEVE 3 PAGUE 2 + BRINDE (AQUI) </div>
+                    <div class="kit-promo-label">🎁 LEVE 3 PAGUE 2 + BRINDE </div>
                     <img src="kit3.jpg">
+                    <div class="price-info">
+                        <span class="price-installment">12x R$ 29,82</span>
+                        <span class="price-total">ou R$ 297,00 à vista</span>
+                    </div>
                 </div>
 
                 <div class="kit-card" onclick="iniciarFluxo('kit3')">
                     <img src="kit5.jpg">
+                    <div class="price-info">
+                        <span class="price-installment">12x R$ 49,90</span>
+                        <span class="price-total">ou R$ 497,00 à vista</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -184,22 +250,18 @@
 
     <section class="faq">
         <div class="container">
-            <h2>Perguntas Frequentes</h2>
+            <h2 style="text-align: center;">Dúvidas Frequentes</h2>
             <details><summary>Como devo usar?</summary><p>Aplique 2 vezes ao dia sobre a pele limpa e seca.</p></details>
-            <details><summary>Em quanto tempo vejo resultados?</summary><p>Resultados visíveis de firmeza e redução de rugas a partir de 30 dias.</p></details>
             <details><summary>É seguro? Tem Anvisa?</summary><p>Sim! Aprovado pela ANVISA sob o número 25351.050959/2024-12.</p></details>
         </div>
     </section>
 
     <footer>
         <p>© 2026 NovaBeauty. Todos os direitos reservados.</p>
-        <p>Site Seguro. Entrega garantida nas áreas atendidas.</p>
-        <br>
-        <small>Os resultados podem variar de pessoa para pessoa.</small>
+        <p>Site Seguro. Entrega garantida para Anápolis e todo o Brasil.</p>
     </footer>
 
     <div class="whatsapp-wrapper">
-        <div class="whatsapp-balloon">Tem alguma dúvida?</div>
         <a href="https://wa.me/5562994593862" class="whatsapp-icon" target="_blank">
             <svg viewBox="0 0 32 32" style="width:35px; fill:#fff;"><path d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.475 2.037 7.787l-2.037 7.425 7.6-1.987c2.15 1.187 4.625 1.863 7.275 1.863 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.387c-2.4 0-4.637-0.612-6.6-1.687l-0.475-0.25-4.487 1.175 1.2-4.35-0.275-0.45c-1.175-1.925-1.85-4.187-1.85-6.6 0-7.05 5.737-12.787 12.787-12.787s12.787 5.737 12.787 12.787c0 7.05-5.737 12.787-12.787 12.787zM22.513 18.7c-0.35-0.175-2.087-1.025-2.412-1.15s-0.562-0.175-0.8 0.175-0.913 1.15-1.125 1.387-0.412 0.25-0.762 0.075c-0.35-0.175-1.475-0.55-2.812-1.737-1.037-0.925-1.737-2.063-1.937-2.412s-0.025-0.537 0.15-0.712c0.15-0.162 0.35-0.412 0.525-0.612s0.225-0.337 0.35-0.562 0.050-0.425-0.025-0.6-0.562-1.35-0.775-1.85-0.412-0.412-0.562-0.412h-0.487c-0.175 0-0.45 0.062-0.687 0.325s-0.913 0.887-0.913 2.162 0.925 2.512 1.050 2.687c0.137 0.175 1.825 2.787 4.412 3.9 0.612 0.262 1.087 0.425 1.462 0.55 0.612 0.2 1.175 0.175 1.612 0.112 0.487-0.075 1.5-0.612 1.712-1.2s0.212-1.1 0.15-1.2c-0.062-0.1-0.225-0.175-0.575-0.35z"></path></svg>
         </a>
@@ -208,8 +270,7 @@
     <div id="modalCep" class="modal">
         <div class="modal-content">
             <div id="step-search">
-                <h3 style="margin-top:0;">🚚 VERIFICAR FRETE GRÁTIS</h3>
-                <p>Informe seu CEP para calcular o prazo de entrega.</p>
+                <h3>🚚 VERIFICAR FRETE GRÁTIS</h3>
                 <input type="text" id="cepInput" class="cep-input" placeholder="00000-000" maxlength="9">
                 <button class="btn-check" onclick="validarCEP()">VERIFICAR CEP</button>
             </div>
@@ -234,7 +295,7 @@
                 ]);
                 cepsBloqueados = new Set(bloq);
                 cidadesAtendidas = new Set(cidades);
-            } catch (e) { console.error("Erro ao carregar bases."); }
+            } catch (e) { console.error("Erro bases."); }
         }
         carregarDados();
 
@@ -256,60 +317,17 @@
             if(cep.length !== 8) return alert("CEP inválido.");
             
             let isBraip = false;
-            let msgRegiao = "";
-
-            if(cepsBloqueados.has(cep)) {
-                isBraip = true;
-                msgRegiao = "Sua região é atendida via <strong>Envio Prioritário</strong>.";
-            } else {
-                try {
-                    const res = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
-                    const data = await res.json();
-                    const cidade = data.localidade.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-                    if(cidadesAtendidas.has(cidade)) {
-                        msgRegiao = "Sua região possui <strong>Entrega Expressa</strong> disponível!";
-                    } else {
-                        isBraip = true;
-                        msgRegiao = "Sua região é atendida via <strong>Envio Prioritário</strong>.";
-                    }
-                } catch(e) { isBraip = true; msgRegiao = "Sua região é atendida via <strong>Envio Prioritário</strong>."; }
-            }
+            let msgRegiao = "Sua região é atendida via <strong>Envio Prioritário</strong>.";
 
             linkDestino = isBraip ? links[kitAtivo].braip : links[kitAtivo].logzz;
             
-            let htmlSucesso = "";
-            if (kitAtivo === 'kit2') {
-                htmlSucesso = `
-                    <div class="badge-brinde">🎁 BRINDE DISPONÍVEL!</div>
-                    <h2 style="color: var(--green); margin-bottom: 10px;">BOA NOTÍCIA!</h2>
-                    <p>${msgRegiao}</p>
-                    <p style="font-size: 1.1rem;">Você acaba de ganhar <strong>+1 Frasco de Brinde</strong> nesta compra!</p>
-                `;
-                document.getElementById('btn-finalizar').innerText = "RESGATAR MEU BRINDE";
-            } else {
-                htmlSucesso = `
-                    <div class="badge-brinde" style="background: var(--gold);">✅ FRETE GRÁTIS LIBERADO!</div>
-                    <h2 style="color: var(--dark); margin-bottom: 10px;">TUDO PRONTO!</h2>
-                    <p>${msgRegiao}</p>
-                    <p>Sua oferta está reservada. Clique abaixo para finalizar seu pedido.</p>
-                `;
-                document.getElementById('btn-finalizar').innerText = "FINALIZAR PEDIDO";
-            }
-
-            document.getElementById('dynamic-content').innerHTML = htmlSucesso;
+            document.getElementById('dynamic-content').innerHTML = `<h2>TUDO PRONTO!</h2><p>${msgRegiao}</p>`;
             document.getElementById('step-search').style.display = 'none';
             document.getElementById('success-area').style.display = 'block';
         }
 
-        document.getElementById('btn-finalizar').onclick = function() { 
-            return gtag_report_conversion(linkDestino); 
-        };
-
-        document.getElementById('cepInput').addEventListener('input', (e) => {
-            let v = e.target.value.replace(/\D/g, "");
-            if (v.length > 5) v = v.slice(0, 5) + "-" + v.slice(5, 8);
-            e.target.value = v;
-        });
+        document.getElementById('btn-finalizar').onclick = function() { return gtag_report_conversion(linkDestino); };
     </script>
 </body>
 </html>
+
