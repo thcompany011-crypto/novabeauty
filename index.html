@@ -48,7 +48,7 @@
         font-family: 'Montserrat', sans-serif;
         margin: 0; padding: 0;
         color: var(--text);
-        background-color: #000; /* Fundo preto para combinar com os kits */
+        background-color: #000;
         line-height: 1.6;
     }
 
@@ -67,6 +67,9 @@
         border-radius: 15px; 
         overflow: hidden; 
         box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        /* Centraliza o wrapper se ele ficar menor que a tela */
+        display: flex;
+        justify-content: center;
     }
     .video-wrapper video { width: 100%; height: auto; display: block; }
 
@@ -149,7 +152,25 @@
     }
     @keyframes pulse-green { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
 
-    @media (max-width: 600px) { .hero h1 { font-size: 1.6rem; } .kits-container { gap: 50px; } .kit-card { width: 100%; } .kit-destaque { transform: scale(1); } }
+    /* AJUSTES MOBILE */
+    @media (max-width: 600px) { 
+        .hero h1 { font-size: 1.6rem; } 
+        .kits-container { gap: 50px; } 
+        .kit-card { width: 100%; } 
+        .kit-destaque { transform: scale(1); }
+
+        /* CORREÇÃO DO TAMANHO DO VÍDEO VERTICAL NO CELULAR */
+        .video-wrapper {
+            max-height: 60vh; /* Limita a altura a 60% da tela do celular */
+            width: fit-content; /* A caixa se ajusta à largura do vídeo */
+            margin: 20px auto;
+        }
+        .video-wrapper video {
+            height: 100%;
+            width: auto; /* A largura se ajusta proporcionalmente */
+            max-height: 60vh; /* Reforço de segurança */
+        }
+    }
   </style>
 </head>
 <body>
