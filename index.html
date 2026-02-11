@@ -48,16 +48,16 @@
         font-family: 'Montserrat', sans-serif;
         margin: 0; padding: 0;
         color: var(--text);
-        background-color: #fff;
+        background-color: #000; /* Fundo preto para combinar com os kits */
         line-height: 1.6;
     }
 
-    h1, h2, h3 { font-family: 'Playfair Display', serif; color: var(--dark); }
+    h1, h2, h3 { font-family: 'Playfair Display', serif; }
     .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
 
     /* HERO */
     .hero { background-color: var(--dark); color: #fff; padding: 60px 0; text-align: center; }
-    .hero h1 { color: var(--gold); font-size: 2.4rem; margin-bottom: 20px; line-height: 1.2; padding: 0 10px; }
+    .hero h1 { color: var(--gold); font-size: 2.4rem; margin-bottom: 20px; line-height: 1.2; }
     
     .video-wrapper { 
         max-width: 800px; 
@@ -67,51 +67,43 @@
         border-radius: 15px; 
         overflow: hidden; 
         box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        line-height: 0;
     }
     .video-wrapper video { width: 100%; height: auto; display: block; }
 
     /* TRUST BAR */
-    .trust-bar { background: #f1f1f1; padding: 20px 0; border-bottom: 1px solid #ddd; }
+    .trust-bar { background: #fff; padding: 20px 0; border-bottom: 1px solid #ddd; }
     .trust-container { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 15px; text-align: center; }
-    .trust-item { font-size: 0.75rem; font-weight: 700; color: #666; text-transform: uppercase; }
-
-    /* COMPARISON TABLE */
-    .comparison-section { padding: 40px 0; background: #fff; }
-    .comparison-table { width: 100%; border-collapse: collapse; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
-    .comparison-table th { background: var(--dark); color: #fff; padding: 15px; text-align: center; }
-    .comparison-table td { padding: 15px; border-bottom: 1px solid #eee; text-align: center; font-weight: 600; }
+    .trust-item { font-size: 0.8rem; font-weight: 700; color: #333; text-transform: uppercase; }
 
     /* OFFERS */
-    .offers { background-color: var(--dark); padding: 80px 0; color: #fff; text-align: center; }
-    .offers h2 { color: #fff; margin-bottom: 60px; font-size: 2rem; }
+    .offers { background-color: #000; padding: 60px 0; color: #fff; text-align: center; }
+    .offers h2 { color: #fff; margin-bottom: 50px; font-size: 2rem; text-transform: uppercase; }
     .kits-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; }
     
     .kit-card { 
-        width: 310px; 
+        width: 320px; 
         cursor: pointer; 
         transition: 0.4s; 
         border-radius: 20px; 
         border: 1px solid #333; 
         position: relative; 
-        background: radial-gradient(circle at top, #333 0%, #1a1a1a 100%);
+        background: #111;
         overflow: hidden;
     }
     
     .kit-card:hover { transform: translateY(-10px); border-color: var(--gold); }
     .kit-card img { width: 100%; display: block; }
     
-    .price-info { padding: 15px; text-align: center; background: rgba(0,0,0,0.3); }
-    .price-installment { color: var(--gold); font-size: 1.5rem; font-weight: 800; display: block; }
-
+    /* AREA DE TEXTOS ABAIXO DA IMAGEM */
     .kit-footer { 
-        background: rgba(212, 175, 55, 0.1); 
-        padding: 12px; 
-        font-size: 0.8rem; 
+        background: #1a1a1a; 
+        padding: 25px 15px; 
+        font-size: 1rem; 
         font-weight: 700; 
         color: var(--gold); 
-        letter-spacing: 0.5px;
-        border-top: 1px solid rgba(212, 175, 55, 0.2);
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        border-top: 1px solid #333;
     }
 
     .kit-destaque { border: 3px solid var(--gold) !important; transform: scale(1.05); box-shadow: 0 0 25px rgba(212, 175, 55, 0.3); }
@@ -129,7 +121,7 @@
     .modal { 
         display: none; position: fixed; 
         top: 0; left: 0; width: 100%; height: 100%; 
-        background: rgba(0,0,0,0.85); backdrop-filter: blur(8px);
+        background: rgba(0,0,0,0.9); backdrop-filter: blur(10px);
         z-index: 10000; justify-content: center; align-items: center; 
     }
     .modal-content { 
@@ -157,7 +149,7 @@
     }
     @keyframes pulse-green { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
 
-    @media (max-width: 600px) { .hero h1 { font-size: 1.6rem; } .kits-container { gap: 40px; } .kit-card { width: 100%; } .kit-destaque { transform: scale(1); } }
+    @media (max-width: 600px) { .hero h1 { font-size: 1.6rem; } .kits-container { gap: 50px; } .kit-card { width: 100%; } .kit-destaque { transform: scale(1); } }
   </style>
 </head>
 <body>
@@ -166,8 +158,9 @@
         <div class="container">
             <h1>A CIÊNCIA DO RESVERATROL: RECUPERE A FIRMEZA DA SUA PELE ENQUANTO VOCÊ DORME</h1>
             <div class="video-wrapper">
-                <video autoplay loop muted playsinline poster="kit3.jpg">
-                    <source src="https://raw.githubusercontent.com/thcompany011-crypto/novabeau/main/13242275_1080_1920_30fps.mp4" type="video/mp4">
+                <video autoplay loop muted playsinline>
+                    <source src="https://raw.githubusercontent.com/thcompany011-crypto/novabeauty/main/13242275_1080_1920_30fps.mp4" type="video/mp4">
+                    Seu navegador não suporta vídeos.
                 </video>
             </div>
         </div>
@@ -175,26 +168,12 @@
 
     <div class="trust-bar">
         <div class="container trust-container">
-            <div class="trust-item">🛡️ Aprovado ANVISA</div>
-            <div class="trust-item">🐰 Cruelty Free</div>
-            <div class="trust-item">🔬 Testado em Laboratório</div>
-            <div class="trust-item">🚚 Frete Grátis Liberado</div>
+            <div class="trust-item">🛡️ APROVADO ANVISA</div>
+            <div class="trust-item">🐰 CRUELTY FREE</div>
+            <div class="trust-item">🔬 DERMATOLOGICAMENTE TESTADO</div>
+            <div class="trust-item">🚚 FRETE GRÁTIS ATIVADO</div>
         </div>
     </div>
-
-    <section class="comparison-section">
-        <div class="container">
-            <table class="comparison-table">
-                <thead>
-                    <tr>
-                        <th style="text-align: left; background: #fff; color: #333;">Garantia de Satisfação de 30 Dias</th>
-                        <th style="color: var(--green);">SIM ✅</th>
-                        <th style="color: var(--accent-red);">NÃO ❌</th>
-                    </tr>
-                </thead>
-            </table>
-        </div>
-    </section>
 
     <section id="ofertas" class="offers">
         <div class="container">
@@ -203,48 +182,39 @@
                 
                 <div class="kit-card" onclick="iniciarFluxo('kit1')">
                     <img src="kit1.jpg">
-                    <div class="price-info">
-                        <span class="price-installment">12x R$ 19,78</span>
-                    </div>
-                    <div class="kit-footer">🚚 FRETE GRÁTIS ATIVADO</div>
+                    <div class="kit-footer">🚚 FRETE GRÁTIS DISPONÍVEL</div>
                 </div>
 
                 <div class="kit-card kit-destaque" onclick="iniciarFluxo('kit2')">
                     <div class="kit-promo-label">🎁 LEVE 3 PAGUE 2 + BRINDE</div>
                     <img src="kit3.jpg">
-                    <div class="price-info">
-                        <span class="price-installment">12x R$ 29,82</span>
-                    </div>
                     <div class="kit-footer">⭐ RECOMENDADO POR ESPECIALISTAS</div>
                 </div>
 
                 <div class="kit-card" onclick="iniciarFluxo('kit3')">
                     <img src="kit5.jpg">
-                    <div class="price-info">
-                        <span class="price-installment">12x R$ 34,74</span>
-                    </div>
-                    <div class="kit-footer">🚀 ENVIO PRIORITÁRIO HOJE</div>
+                    <div class="kit-footer">🚀 ENVIO IMEDIATO HOJE</div>
                 </div>
 
             </div>
         </div>
     </section>
 
-    <section style="background: var(--gray); padding: 60px 0;">
+    <section style="background: #fff; padding: 60px 0; color: #333;">
         <div class="container">
             <h2 style="text-align: center;">Dúvidas Frequentes</h2>
-            <details style="background:#fff; padding:20px; margin-bottom:10px; border-radius:10px; border:1px solid #eee; cursor:pointer;">
+            <details style="padding:20px; margin-bottom:10px; border-radius:10px; border:1px solid #eee; cursor:pointer;">
                 <summary style="font-weight:700;">Como devo usar?</summary>
                 <p style="margin-top:10px;">Aplique 2 vezes ao dia sobre a pele limpa e seca para resultados máximos.</p>
             </details>
-            <details style="background:#fff; padding:20px; margin-bottom:10px; border-radius:10px; border:1px solid #eee; cursor:pointer;">
+            <details style="padding:20px; margin-bottom:10px; border-radius:10px; border:1px solid #eee; cursor:pointer;">
                 <summary style="font-weight:700;">É seguro? Tem Anvisa?</summary>
                 <p style="margin-top:10px;">Sim! Produto 100% seguro e aprovado pela ANVISA.</p>
             </details>
         </div>
     </section>
 
-    <footer style="padding: 40px; text-align: center; background: #1a1a1a; color: #888; font-size: 0.8rem;">
+    <footer style="padding: 40px; text-align: center; background: #000; color: #555; font-size: 0.8rem;">
         <p>© 2026 NovaBeauty. Todos os direitos reservados.</p>
         <p>Anápolis, GO - Logística Expressa Ativada.</p>
     </footer>
@@ -259,7 +229,7 @@
         <div class="modal-content">
             <span class="close-modal" onclick="window.history.back()">×</span>
             <h3 style="margin-top:0;">🚚 VERIFICAR FRETE GRÁTIS</h3>
-            <p style="font-size: 0.9rem; opacity: 0.8;">Informe seu CEP para calcular a entrega expressa.</p>
+            <p style="font-size: 0.9rem; opacity: 0.7;">Informe seu CEP para calcular o envio expressa.</p>
             <input type="text" id="cepInput" class="cep-input" placeholder="00000-000" maxlength="9">
             <button class="btn-check" onclick="validarCEP()">VERIFICAR AGORA</button>
         </div>
@@ -297,4 +267,3 @@
     </script>
 </body>
 </html>
-
