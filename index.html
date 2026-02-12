@@ -56,31 +56,31 @@
     .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
 
     /* HERO */
-    .hero { background-color: var(--dark); color: #fff; padding: 60px 0; text-align: center; }
-    .hero h1 { color: var(--gold); font-size: 2.4rem; margin-bottom: 20px; line-height: 1.2; }
+    .hero { background-color: var(--dark); color: #fff; padding: 40px 0; text-align: center; }
+    .hero h1 { color: var(--gold); font-size: 2rem; margin-bottom: 20px; line-height: 1.2; padding: 0 15px; text-transform: uppercase; }
     
+    /* CORREÇÃO DEFINITIVA DO VÍDEO VERTICAL */
     .video-wrapper { 
-        max-width: 800px; 
-        margin: 30px auto; 
+        width: 100%;
+        max-width: 320px; /* Tamanho de um smartphone na tela */
+        margin: 0 auto; 
         background: #000; 
         border: 2px solid var(--gold); 
-        border-radius: 15px; 
+        border-radius: 20px; 
         overflow: hidden; 
-        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        /* Centraliza o wrapper se ele ficar menor que a tela */
-        display: flex;
-        justify-content: center;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+        line-height: 0;
     }
     .video-wrapper video { width: 100%; height: auto; display: block; }
 
     /* TRUST BAR */
-    .trust-bar { background: #fff; padding: 20px 0; border-bottom: 1px solid #ddd; }
-    .trust-container { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 15px; text-align: center; }
-    .trust-item { font-size: 0.8rem; font-weight: 700; color: #333; text-transform: uppercase; }
+    .trust-bar { background: #fff; padding: 15px 0; border-bottom: 1px solid #ddd; margin-top: 30px; }
+    .trust-container { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 10px; text-align: center; }
+    .trust-item { font-size: 0.7rem; font-weight: 700; color: #333; text-transform: uppercase; }
 
     /* OFFERS */
     .offers { background-color: #000; padding: 60px 0; color: #fff; text-align: center; }
-    .offers h2 { color: #fff; margin-bottom: 50px; font-size: 2rem; text-transform: uppercase; }
+    .offers h2 { color: #fff; margin-bottom: 50px; font-size: 1.8rem; text-transform: uppercase; }
     .kits-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; }
     
     .kit-card { 
@@ -97,23 +97,27 @@
     .kit-card:hover { transform: translateY(-10px); border-color: var(--gold); }
     .kit-card img { width: 100%; display: block; }
     
-    /* AREA DE TEXTOS ABAIXO DA IMAGEM */
+    /* RODAPÉ DOS CARDS - APENAS TEXTO */
     .kit-footer { 
         background: #1a1a1a; 
-        padding: 25px 15px; 
-        font-size: 1rem; 
+        padding: 20px 15px; 
+        font-size: 0.9rem; 
         font-weight: 700; 
         color: var(--gold); 
         letter-spacing: 1px;
         text-transform: uppercase;
         border-top: 1px solid #333;
+        min-height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .kit-destaque { border: 3px solid var(--gold) !important; transform: scale(1.05); box-shadow: 0 0 25px rgba(212, 175, 55, 0.3); }
     
     .kit-promo-label {
         background: var(--accent-red);
-        color: #fff; font-size: 0.75rem; font-weight: 800; padding: 8px 15px; border-radius: 50px;
+        color: #fff; font-size: 0.7rem; font-weight: 800; padding: 6px 12px; border-radius: 50px;
         position: absolute; top: 10px; right: 10px; z-index: 100;
         animation: pulsePromo 2s infinite;
     }
@@ -128,19 +132,19 @@
         z-index: 10000; justify-content: center; align-items: center; 
     }
     .modal-content { 
-        background: #1a1a1a; padding: 40px 30px; border-radius: 20px; 
+        background: #1a1a1a; padding: 40px 30px; border-radius: 25px; 
         width: 90%; max-width: 380px; text-align: center; border: 2px solid var(--gold); color: #fff;
         position: relative;
     }
     .close-modal { position: absolute; top: 15px; right: 20px; font-size: 1.8rem; color: var(--gold); cursor: pointer; }
     .cep-input { 
         width: 100%; padding: 15px; margin: 20px 0; background: #222; border: 1px solid #444; 
-        border-radius: 10px; font-size: 1.4rem; text-align: center; color: var(--gold); outline: none;
+        border-radius: 12px; font-size: 1.4rem; text-align: center; color: var(--gold); outline: none; box-sizing: border-box;
     }
     .btn-check { 
         background: linear-gradient(135deg, #d4af37 0%, #b8962e 100%); 
         color: #000; border: none; padding: 18px; width: 100%; font-weight: 800; 
-        border-radius: 50px; cursor: pointer; text-transform: uppercase;
+        border-radius: 50px; cursor: pointer; text-transform: uppercase; font-size: 1rem;
     }
 
     /* WHATSAPP */
@@ -152,24 +156,12 @@
     }
     @keyframes pulse-green { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
 
-    /* AJUSTES MOBILE */
     @media (max-width: 600px) { 
-        .hero h1 { font-size: 1.6rem; } 
+        .hero h1 { font-size: 1.5rem; } 
+        .video-wrapper { max-width: 280px; } /* Um pouco menor no telemóvel */
         .kits-container { gap: 50px; } 
         .kit-card { width: 100%; } 
-        .kit-destaque { transform: scale(1); }
-
-        /* CORREÇÃO DO TAMANHO DO VÍDEO VERTICAL NO CELULAR */
-        .video-wrapper {
-            max-height: 60vh; /* Limita a altura a 60% da tela do celular */
-            width: fit-content; /* A caixa se ajusta à largura do vídeo */
-            margin: 20px auto;
-        }
-        .video-wrapper video {
-            height: 100%;
-            width: auto; /* A largura se ajusta proporcionalmente */
-            max-height: 60vh; /* Reforço de segurança */
-        }
+        .kit-destaque { transform: scale(1); } 
     }
   </style>
 </head>
@@ -177,7 +169,7 @@
 
     <section class="hero">
         <div class="container">
-            <h1>A CIÊNCIA DO RESVERATROL: RECUPERE A FIRMEZA DA SUA PELE ENQUANTO VOCÊ DORME</h1>
+            <h1>RECUPERE A FIRMEZA DA SUA PELE ENQUANTO VOCÊ DORME</h1>
             <div class="video-wrapper">
                 <video autoplay loop muted playsinline>
                     <source src="https://raw.githubusercontent.com/thcompany011-crypto/novabeauty/main/13242275_1080_1920_30fps.mp4" type="video/mp4">
@@ -191,7 +183,7 @@
         <div class="container trust-container">
             <div class="trust-item">🛡️ APROVADO ANVISA</div>
             <div class="trust-item">🐰 CRUELTY FREE</div>
-            <div class="trust-item">🔬 DERMATOLOGICAMENTE TESTADO</div>
+            <div class="trust-item">🔬 TESTADO EM LABORATÓRIO</div>
             <div class="trust-item">🚚 FRETE GRÁTIS ATIVADO</div>
         </div>
     </div>
@@ -223,7 +215,7 @@
 
     <section style="background: #fff; padding: 60px 0; color: #333;">
         <div class="container">
-            <h2 style="text-align: center;">Dúvidas Frequentes</h2>
+            <h2 style="text-align: center; font-family: 'Playfair Display', serif;">Dúvidas Frequentes</h2>
             <details style="padding:20px; margin-bottom:10px; border-radius:10px; border:1px solid #eee; cursor:pointer;">
                 <summary style="font-weight:700;">Como devo usar?</summary>
                 <p style="margin-top:10px;">Aplique 2 vezes ao dia sobre a pele limpa e seca para resultados máximos.</p>
@@ -249,8 +241,8 @@
     <div id="modalCep" class="modal">
         <div class="modal-content">
             <span class="close-modal" onclick="window.history.back()">×</span>
-            <h3 style="margin-top:0;">🚚 VERIFICAR FRETE GRÁTIS</h3>
-            <p style="font-size: 0.9rem; opacity: 0.7;">Informe seu CEP para calcular o envio expressa.</p>
+            <h3 style="margin-top:0; font-family: 'Playfair Display', serif;">🚚 VERIFICAR FRETE GRÁTIS</h3>
+            <p style="font-size: 0.9rem; opacity: 0.7;">Informe o seu CEP para calcular o envio expresso.</p>
             <input type="text" id="cepInput" class="cep-input" placeholder="00000-000" maxlength="9">
             <button class="btn-check" onclick="validarCEP()">VERIFICAR AGORA</button>
         </div>
